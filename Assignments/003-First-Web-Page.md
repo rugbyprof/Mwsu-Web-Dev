@@ -1,33 +1,27 @@
 ## Assignment 3 - First Web Page
 
 #### Due July 13<sup>th</sup> by class time.
-- Go to `/var/www/html` on your server
-- Go to your `/var/www/html/4443/Portal` directory, and run the following commands:
+- Go to `/var/www/html` on your server and run the following commands:
 
 ```bash
-$ wget http://startbootstrap.com/downloads/simple-sidebar.zip
-$ unzip simple-sidebar.zip
-$ rm simple-sidebar.zip
+$ wget https://github.com/rugbyprof/Mwsu-Web-Dev/blob/master/just_one_page.zip?raw=true
+$ unzip just_one_page.zip
+$ rm just_one_page.zip
 ```
 
-- Once you've unzipped `simple-sidebar.zip`, you will have a `simple-sidebar` folder. We want to move the contents of `simple-sidebar` back one directory:
+- Once you've unzipped `just_one_page.zip`, if you have a `just_one_page` folder, move the contents of `just_one_page` back one directory:
 
 ```
-$ cd simple-sidebar
+$ cd just_one_page
 $ mv * ..
-$ rm -rf simple-sidebar
+$ rm -rf just_one_page
 ```
 
 The commands above do the following:
 
-1. change into the simple-sidebar directory
+1. change into the `just_one_page` directory
 2. move all the files and folders back into the portal folder (or up one directory)
-3. delete the NOW empty folder: simple-sidebar
-
-Your new directory structure (up till now) should look like:
-- ![1] 4443
-    - ![1] mynewsite
-    - ![1] Portal
+3. delete the NOW empty folder: `just_one_page`
 
 
 ### Make the following changes:
