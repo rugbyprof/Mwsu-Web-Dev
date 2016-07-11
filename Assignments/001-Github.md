@@ -80,9 +80,7 @@ Here is a link to my repo: https://github.com/rugbyprof/Mwsu-Web-Dev
 
 Every email must have a minimum of two items included:
 
-- The course number and title in the subject:
-    - Undergrads `4443 2D Gaming`
-    - Grads `5353 2D Gaming`
+- The course number and title in the subject: `5373 Web Dev`
 - Your name
 
 I can't promise an answer if you don't provide those two pieces of information.
