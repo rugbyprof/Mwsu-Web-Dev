@@ -4,7 +4,7 @@ Creating an account and a repository
 
 ## ![](http://f.cl.ly/items/3R3r0z1g3G0o0r2T1i0t/heavy_exclamation_mark_symbol_emoji_2757.jpg) Important:
 
-Even if you've had me for another course, I need you to create your repository and still email me.
+Even if you've had me for another course, I need you to create your repository and fill out the spreadsheet [here](https://docs.google.com/spreadsheets/d/1rrqVNQxbTIjqEoPOlIuoG3AQU2E8ctr35lpJ8sFt4wY/edit?usp=sharing).
 
 I cannot perform my job of assessing your work if you do not complete this assignment correctly. Therefore:
 - If you don't complete it, drop the course because you will fail.
@@ -52,17 +52,10 @@ a means to push your files to a central repository. So if your using a lab or pe
 - This is vital as I need access to your files with edit permissions.
 
 
-#### Send me an email:
+#### Update Class Roster:
 (40%)
-- `To`: terry.griffin@mwsu.edu
-- `Subject`: Mwsu Web Dev - Assignment 1 
 
->
-Hello Professor Griffin,<br><br>
-My Name is: place your name here<br>
-My Github username is: githubusername<br>
-My Repository name is: your-repository-name
-Here is a link to my repo: link
+Go [here](https://docs.google.com/spreadsheets/d/1rrqVNQxbTIjqEoPOlIuoG3AQU2E8ctr35lpJ8sFt4wY/edit?usp=sharing) and fill in the information by your name.
 
 Your repository name and your github username are NOT the same thing.
 
