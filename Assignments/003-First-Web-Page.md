@@ -25,9 +25,7 @@ The commands above do the following:
 
 
 ### Make the following changes:
-
-- Change the text "Start Bootstrap" in the sidebar to "Assignment Portal"
-- Change the text "Simple Sidebar" in the body to "Your Name's Assignment Portal"
+- TBD
 
 
 [1]: https://cdn1.iconfinder.com/data/icons/stilllife/24x24/filesystems/gnome-fs-directory.png
