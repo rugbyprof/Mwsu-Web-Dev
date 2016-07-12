@@ -1,254 +1,269 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
 <head>
-  <meta charset="utf-8">
-  
-  <title>Mwsu Web Dev</title>
-  <meta name="author" content="Terry Griffin">
 
-  
-  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <link rel="alternate" href="/Mwsu-Web-Dev/atom.xml" title="Mwsu Web Dev" type="application/atom+xml">
-  <link rel="stylesheet" href="/Mwsu-Web-Dev/css/style.css" media="screen" type="text/css">
-  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
-  
+    <!--Description-->
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Terry Griffin">
+    
+
+    <!--Open Graph Title-->
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Mwsu Web Dev"/>
+
+    <!--Page Cover-->
+    
+        <meta property="og:image" content="undefined"/>
+    
+
+    <!-- Title -->
+    
+    <title>Mwsu Web Dev</title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/Mwsu-Web-Dev/sass/main.css">
+
+    <!--[if lt IE 8]>
+        <script src="/Mwsu-Web-Dev/js/ie/html5shiv.js"></script>
+    <![endif]-->
+
+    <!--[if lt IE 8]>
+        <link rel="stylesheet" href="/Mwsu-Web-Dev/sass/ie8.css">
+    <![endif]-->
+
+    <!--[if lt IE 9]>
+        <link rel="stylesheet" href="/Mwsu-Web-Dev/sass/ie9.css">
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    
+
+
 </head>
 
 <body>
-  <header id="header" class="inner"><nav>
-  <ul>
-    
-      <li><a href="/">Home</a></li>
-    
-      <li><a href="/archives">Archives</a></li>
-    
-  </ul>
-</nav></header>
-  <div id="content" class="inner">
-  <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <header>
-    
-  
-    <h1 class="title"><a href="/Mwsu-Web-Dev/2016/07/11/angular/">AngularJs</a></h1>
-  
 
-    <time datetime="2016-07-12T00:53:43.000Z">
-  <span class="day">11</span><span class="month">Jul</span>
-</time>
-  </header>
-  <div class="entry-content">
-    
-      <p>AngularJS is awesome for building testable single page applications (SPA), and also data driven and CRUD apps. </p>
-<p>AngularJS motto is “HTML enhanced for web apps”. It extends standard HTML tags and properties to bind events and data into it using JavaScript. It has a different approach to other libraries such as jQuery, Backbone.Js, Ember.js and similar lean towards “Unobtrusive JavaScript”.</p>
-<p>In the traditional unobtrusive JavaScript approach, instead of declaring the event handlers right in the element that they act upon, they are referenced using IDs and classes in the elements. That gives the advantage of separating structure (HTML) from behavior (Javascript). However, it does not do any better on code complexity and readability.</p>
-<p>Times have changed since then. Let’s examine how AngularJS tries to alleviate code complexity and readability:</p>
-<ul>
-<li>Unit testing ready: JavaScript is, usually, very hard to unit test when you have DOM manipulations and business logic together (e.g. jQuery based code). AngularJS keeps DOM manipulation in the HTML and business logic separated. Data and dependencies are <code>$inject</code>ed as needed.</li>
-<li><code>DOM</code> manipulation where they are used. It decouples DOM manipulation from application logic.</li>
-<li>AngularJS is also excellent for single-page applications (SPA).</li>
-<li>Different browsers implements features differently, but fret not. Angularâ€™s directive (or HTML extensions) take care of the differences for you.</li>
-<li>Global namespace expressions and method definitions are scoped within controllers, so they do not pollute the global namespace.</li>
-<li>Data models are plain old JavaScript objects (POJO).</li>
-<li>Write less code: AngualarJS features like directives, filters and automatic data bindings save code writing. </li>
-<li>AngularJS provides solution for writing modular code and dependencies management.</li>
-</ul>
+    <div id="wrapper">
 
-    
-    
-    <footer class="meta">
-      
-      
-  <div class="tags">
-<a href="/Mwsu-Web-Dev/tags/angularjs/">angularjs</a></div>
+        <!-- Menu -->
+        <!-- Header -->
+<header id="header">
+    <div class="inner">
 
-      
-    </footer>
+        <!-- Logo -->
+        <a href="/Mwsu-Web-Dev/" class="logo">
+            <span class="symbol"><img src="/images/logo.svg" alt="" /></span><span class="title">Mwsu Web Dev</span>
+        </a>
+
+        <!-- Nav -->
+        <nav>
+            <ul>
+                <li><a href="#menu">Menu</a></li>
+            </ul>
+        </nav>
+
+    </div>
+</header>
+
+<!-- Menu -->
+<nav id="menu">
+    <h2>Menu</h2>
+    <ul>
+        
+            <li>
+                <a href="/Mwsu-Web-Dev/">Home</a>
+            </li>
+        
+            <li>
+                <a href="/Mwsu-Web-Dev/archives">Archives</a>
+            </li>
+        
+            <li>
+                <a href="/Mwsu-Web-Dev/about.html">About</a>
+            </li>
+        
+    </ul>
+</nav>
+
+
+        <div id="main">
+            <div class="inner">
+
+                <!-- Main Content -->
+                <header>
+    <h1>This is Phantom, a free, fully responsive site<br />template designed by <a href="http://html5up.net">HTML5 UP</a>.</h1>
+    <p>Etiam quis viverra lorem, in semper lorem. Sed nisl arcu euismod sit amet nisi euismod sed cursus arcu elementum ipsum arcu vivamus quis venenatis orci lorem ipsum et magna feugiat veroeros aliquam. Lorem ipsum dolor sit amet nullam dolore.</p>
+</header>
+
+<section class="tiles">
     
-  </div>
-  
+        
+
+<article class="style1">
+    <span class="image">
+        <img src="http://placehold.it/450x450" alt="" />
+    </span>
+    <a href="/Mwsu-Web-Dev/2016/07/11/angular/">
+        <h2>AngularJs</h2>
+        <div class="content">
+            <p></p>
+        </div>
+    </a>
 </article>
+    
+        
 
-  <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <header>
-    
-  
-    <h1 class="title"><a href="/Mwsu-Web-Dev/2016/07/11/This-a-new-post/">This a new post</a></h1>
-  
-
-    <time datetime="2016-07-12T00:30:11.000Z">
-  <span class="day">11</span><span class="month">Jul</span>
-</time>
-  </header>
-  <div class="entry-content">
-    
-      
-    
-    
-    <footer class="meta">
-      
-      
-      
-    </footer>
-    
-  </div>
-  
+<article class="style2">
+    <span class="image">
+        <img src="http://placehold.it/450x450" alt="" />
+    </span>
+    <a href="/Mwsu-Web-Dev/2016/07/11/This-a-new-post/">
+        <h2>This a new post</h2>
+        <div class="content">
+            <p></p>
+        </div>
+    </a>
 </article>
+    
+        
 
-  <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <header>
-    
-  
-    <h1 class="title"><a href="/Mwsu-Web-Dev/2016/07/11/Intro-to-Javascript/">Intro to Javascript</a></h1>
-  
-
-    <time datetime="2016-07-11T23:57:32.000Z">
-  <span class="day">11</span><span class="month">Jul</span>
-</time>
-  </header>
-  <div class="entry-content">
-    
-      <figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">jQuery(<span class="function"><span class="keyword">function</span><span class="params">($)</span></span>&#123; <span class="comment">// on DOM load</span></div><div class="line"></div><div class="line">	mycarousel = <span class="keyword">new</span> simplecarousel(&#123;</div><div class="line">		id: <span class="string">'mycarousel'</span>,</div><div class="line">		url: <span class="string">'carouselcontent.htm'</span></div><div class="line">	&#125;)</div><div class="line"></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-
-    
-    
-    <footer class="meta">
-      
-      
-      
-    </footer>
-    
-  </div>
-  
+<article class="style3">
+    <span class="image">
+        <img src="http://placehold.it/450x450" alt="" />
+    </span>
+    <a href="/Mwsu-Web-Dev/2016/07/11/Intro-to-Javascript/">
+        <h2>Intro to Javascript</h2>
+        <div class="content">
+            <p></p>
+        </div>
+    </a>
 </article>
+    
+        
 
-  <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <header>
-    
-  
-    <h1 class="title"><a href="/Mwsu-Web-Dev/2016/07/11/hello-world/">Hello World</a></h1>
-  
-
-    <time datetime="2016-07-11T23:44:05.000Z">
-  <span class="day">11</span><span class="month">Jul</span>
-</time>
-  </header>
-  <div class="entry-content">
-    
-      <p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-    
-    
-    <footer class="meta">
-      
-      
-      
-    </footer>
-    
-  </div>
-  
+<article class="style4">
+    <span class="image">
+        <img src="http://placehold.it/450x450" alt="" />
+    </span>
+    <a href="/Mwsu-Web-Dev/2016/07/11/hello-world/">
+        <h2>Hello World</h2>
+        <div class="content">
+            <p></p>
+        </div>
+    </a>
 </article>
-
-
-<nav id="pagenavi">
-  
-  
-  <div class="clearfix"></div>
-</nav></div>
-  <footer id="footer" class="inner"><div class="social alignright">
-  
-  
-  
-  
-  <a class="rss" href="/Mwsu-Web-Dev/atom.xml" title="RSS">RSS</a>
-</div>
-<p>
-  
-  &copy; 2016 Terry Griffin
-  
-</p>
-<div class="clearfix"></div></footer>
-  <script src="/Mwsu-Web-Dev/js/jquery.imagesloaded.min.js"></script>
-<script src="/Mwsu-Web-Dev/js/gallery.js"></script>
+    
+</section>
 
 
 
 
-<link rel="stylesheet" href="/Mwsu-Web-Dev/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-<script src="/Mwsu-Web-Dev/fancybox/jquery.fancybox.pack.js"></script>
+            </div>
+        </div>
+
+        <!-- Footer -->
+<footer id="footer">
+    <div class="inner">
+        <section>
+            <h2>About</h2>
+            <div>
+                This theme was initially developed by <a href="http://html5up.net" target="_blank">HTML5 UP</a>. It is adapted for Hexo by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a>.<br />The source code is available on <a href="https://github.com/klugjo/hexo-theme-phantom" target="_blank">GitHub</a>.
+            </div>
+        </section>
+        <section>
+            <h2>Follow</h2>
+            <ul class="icons">
+                
+                    <li><a href="https://twitter.com/?lang=en" class="icon style2 fa-twitter" target="_blank" ><span class="label">Twitter</span></a></li>
+                
+                
+                    <li><a href="https://www.facebook.com/" class="icon style2 fa-facebook" target="_blank" ><span class="label">Facebook</span></a></li>
+                
+                
+                    <li><a href="https://www.instagram.com/" class="icon style2 fa-instagram" target="_blank" ><span class="label">Instagram</span></a></li>
+                
+                
+                    <li><a href="https://dribbble.com/" class="icon style2 fa-dribbble" target="_blank" ><span class="label">Dribbble</span></a></li>
+                
+                
+                    <li><a href="https://github.com/klugjo/hexo-theme-phantom/commits?author=klugjo" class="icon style2 fa-github" target="_blank" ><span class="label">GitHub</span></a></li>
+                
+                
+                    <li><a href="https://plus.google.com/" class="icon style2 fa-google-plus" target="_blank" ><span class="label">Google+</span></a></li>
+                
+                
+                    <li><a href="https://www.behance.net/" class="icon style2 fa-behance" target="_blank" ><span class="label">Behance</span></a></li>
+                
+                
+                    <li><a href="https://500px.com/" class="icon style2 fa-500px" target="_blank" ><span class="label">500px</span></a></li>
+                
+                
+                    <li><a href="\#" class="icon style2 fa-envelope-o" target="_blank" ><span class="label">Email</span></a></li>
+                
+                
+                    <li><a href="\#" class="icon style2 fa-rss" target="_blank" ><span class="label">RSS</span></a></li>
+                
+            </ul>
+        </section>
+        <ul class="copyright">
+            <li>&copy; Untitled. All rights reserved</li>
+            <li>Design: <a href="http://html5up.net" target="_blank">HTML5 UP</a></li>
+            <li>Hexo: <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></li>
+        </ul>
+    </div>
+</footer>
+    </div>
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="/Mwsu-Web-Dev/js/jquery.min.js"></script>
+
+<!-- skel -->
+<script src="/Mwsu-Web-Dev/js/skel.min.js"></script>
+
+<!-- Custom Code -->
+<script src="/Mwsu-Web-Dev/js/util.js"></script>
+
+<!--[if lte IE 8]>
+<script src="/Mwsu-Web-Dev/js/ie/respond.min.js"></script>
+<![endif]-->
+
+<!-- Custom Code -->
+<script src="/Mwsu-Web-Dev/js/main.js"></script>
+
+<!-- Gallery -->
+<script src="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
 <script type="text/javascript">
-(function($){
-  $('.fancybox').fancybox();
-})(jQuery);
+    var disqus_shortname = 'klugjo';
+
+    (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
 </script>
 
 
-<div id="phasebeam">
-  <canvas></canvas>
-  <canvas></canvas>
-  <canvas></canvas>
-</div>
-<script src="/Mwsu-Web-Dev/js/phasebeam.js"></script>
 </body>
+
 </html>
