@@ -175,72 +175,179 @@ Array (which is a special kind of object">
 <figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">parseInt</span>(<span class="string">"11"</span>, <span class="number">2</span>); <span class="comment">// 3</span></div></pre></td></tr></table></figure>
 <p>Similarly, you can parse floating point numbers using the built-in parseFloat() function. Unlike its <code>parseInt()</code> cousin, <code>parseFloat()</code> always uses base 10.</p>
 <p>You can also use the unary + operator to convert values to numbers:</p>
-<ul>
-<li>“42”;   // 42</li>
-<li>“010”;  // 10</li>
-<li>“0x10”; // 16<br>A special value called NaN (short for “Not a Number”) is returned if the string is non-numeric:</li>
-</ul>
-<p>parseInt(“hello”, 10); // NaN<br>NaN is toxic: if you provide it as an input to any mathematical operation the result will also be NaN:</p>
-<p>NaN + 5; // NaN<br>You can test for NaN using the built-in isNaN() function:</p>
-<p>isNaN(NaN); // true<br>JavaScript also has the special values Infinity and -Infinity:</p>
-<p>1 / 0; //  Infinity<br>-1 / 0; // -Infinity<br>You can test for Infinity, -Infinity and NaN values using the built-in isFinite() function:</p>
-<p>isFinite(1/0); // false<br>isFinite(-Infinity); // false<br>isFinite(NaN); // false<br>The parseInt() and parseFloat() functions parse a string until they reach a character that isn’t valid for the specified number format, then return the number parsed up to that point. However the “+” operator simply converts the string to NaN if there is an invalid character contained within it. Just try parsing the string “10.2abc” with each method by yourself in the console and you’ll understand the differences better.<br>Strings<br>Strings in JavaScript are sequences of Unicode characters. This should be welcome news to anyone who has had to deal with internationalization. More accurately, they are sequences of UTF-16 code units; each code unit is represented by a 16-bit number. Each Unicode character is represented by either 1 or 2 code units.</p>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">+ <span class="string">"42"</span>;   <span class="comment">// 42</span></div><div class="line">+ <span class="string">"010"</span>;  <span class="comment">// 10</span></div><div class="line">+ <span class="string">"0x10"</span>; <span class="comment">// 16</span></div></pre></td></tr></table></figure>
+<p>A special value called NaN (short for “Not a Number”) is returned if the string is non-numeric:</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">parseInt</span>(<span class="string">"hello"</span>, <span class="number">10</span>); <span class="comment">// NaN</span></div></pre></td></tr></table></figure>
+<p>NaN is toxic: if you provide it as an input to any mathematical operation the result will also be NaN:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="literal">NaN</span> + <span class="number">5</span>; <span class="comment">// NaN</span></div></pre></td></tr></table></figure>
+<p>You can test for NaN using the built-in isNaN() function:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">isNaN</span>(<span class="literal">NaN</span>); <span class="comment">// true</span></div></pre></td></tr></table></figure>
+<p>JavaScript also has the special values Infinity and -Infinity:</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="number">1</span> / <span class="number">0</span>; <span class="comment">//  Infinity</span></div><div class="line"><span class="number">-1</span> / <span class="number">0</span>; <span class="comment">// -Infinity</span></div></pre></td></tr></table></figure>
+<p>You can test for Infinity, -Infinity and NaN values using the built-in isFinite() function:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">isFinite</span>(<span class="number">1</span>/<span class="number">0</span>); <span class="comment">// false</span></div><div class="line"><span class="built_in">isFinite</span>(-<span class="literal">Infinity</span>); <span class="comment">// false</span></div><div class="line"><span class="built_in">isFinite</span>(<span class="literal">NaN</span>); <span class="comment">// false</span></div></pre></td></tr></table></figure>
+<p>The <code>parseInt()</code> and <code>parseFloat()</code> functions parse a string until they reach a character that isn’t valid for the specified number format, then return the number parsed up to that point. However the “+” operator simply converts the string to <code>NaN</code> if there is an invalid character contained within it. Just try parsing the string “10.2abc” with each method by yourself in the console and you’ll understand the differences better.</p>
+<p>##Strings</p>
+<p>Strings in JavaScript are sequences of Unicode characters. This should be welcome news to anyone who has had to deal with internationalization. More accurately, they are sequences of UTF-16 code units; each code unit is represented by a 16-bit number. Each Unicode character is represented by either 1 or 2 code units.</p>
 <p>If you want to represent a single character, you just use a string consisting of that single character.</p>
 <p>To find the length of a string (in code units), access its length property:</p>
-<p>“hello”.length; // 5<br>There’s our first brush with JavaScript objects! Did we mention that you can use strings like objects too? They have methods as well that allow you to manipulate the string and access information about the string:</p>
-<p>“hello”.charAt(0); // “h”<br>“hello, world”.replace(“hello”, “goodbye”); // “goodbye, world”<br>“hello”.toUpperCase(); // “HELLO”<br>Other types<br>JavaScript distinguishes between null, which is a value that indicates a deliberate non-value (and is only accessible through the null keyword), and undefined, which is a value of type undefined that indicates an uninitialized value — that is, a value hasn’t even been assigned yet. We’ll talk about variables later, but in JavaScript it is possible to declare a variable without assigning a value to it. If you do this, the variable’s type is undefined. undefined is actually a constant.</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="string">"hello"</span>.<span class="built_in">length</span>;<span class="comment"> // 5</span></div></pre></td></tr></table></figure>
+<p>There’s our first brush with JavaScript objects! Did we mention that you can use strings like objects too? They have methods as well that allow you to manipulate the string and access information about the string:</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="string">"hello"</span>.charAt(<span class="number">0</span>); <span class="regexp">//</span> <span class="string">"h"</span></div><div class="line"><span class="string">"hello, world"</span>.replace(<span class="string">"hello"</span>, <span class="string">"goodbye"</span>); <span class="regexp">//</span> <span class="string">"goodbye, world"</span></div><div class="line"><span class="string">"hello"</span>.toUpperCase(); <span class="regexp">//</span> <span class="string">"HELLO"</span></div></pre></td></tr></table></figure>
+<p>##Other types</p>
+<p>JavaScript distinguishes between null, which is a value that indicates a deliberate non-value (and is only accessible through the null keyword), and undefined, which is a value of type undefined that indicates an uninitialized value — that is, a value hasn’t even been assigned yet. We’ll talk about variables later, but in JavaScript it is possible to declare a variable without assigning a value to it. If you do this, the variable’s type is undefined. undefined is actually a constant.</p>
 <p>JavaScript has a boolean type, with possible values true and false (both of which are keywords.) Any value can be converted to a boolean according to the following rules:</p>
-<p>false, 0, empty strings (“”), NaN, null, and undefined all become false.<br>All other values become true.<br>You can perform this conversion explicitly using the Boolean() function:</p>
-<p>Boolean(“”);  // false<br>Boolean(234); // true<br>However, this is rarely necessary, as JavaScript will silently perform this conversion when it expects a boolean, such as in an if statement (see below.) For this reason, we sometimes speak simply of “true values” and “false values,” meaning values that become true and false, respectively, when converted to booleans. Alternatively, such values can be called “truthy” and “falsy”, respectively.</p>
+<ol>
+<li>false, 0, empty strings (“”), NaN, null, and undefined all become false.</li>
+<li>All other values become true.</li>
+</ol>
+<p>You can perform this conversion explicitly using the Boolean() function:</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Boolean(<span class="string">""</span>);  <span class="regexp">//</span> <span class="keyword">false</span></div><div class="line">Boolean(<span class="number">234</span>); <span class="regexp">//</span> <span class="keyword">true</span></div></pre></td></tr></table></figure>
+<p>However, this is rarely necessary, as JavaScript will silently perform this conversion when it expects a boolean, such as in an if statement (see below.) For this reason, we sometimes speak simply of “true values” and “false values,” meaning values that become true and false, respectively, when converted to booleans. Alternatively, such values can be called “truthy” and “falsy”, respectively.</p>
 <p>Boolean operations such as &amp;&amp; (logical and), || (logical or), and ! (logical not) are supported; see below.</p>
-<p>Variables<br>New variables in JavaScript are declared using the var keyword:</p>
-<p>var a;<br>var name = “simon”;<br>If you declare a variable without assigning any value to it, its type is undefined.</p>
+<p>##Variables</p>
+<p>New variables in JavaScript are declared using the var keyword:</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a;</div><div class="line"><span class="keyword">var</span> name = <span class="string">"simon"</span>;</div></pre></td></tr></table></figure>
+<p>If you declare a variable without assigning any value to it, its type is undefined.</p>
 <p>An important difference between JavaScript and other languages like Java is that in JavaScript, blocks do not have scope; only functions have scope. So if a variable is defined using var in a compound statement (for example inside an if control structure), it will be visible to the entire function. However, starting with ECMAScript Edition 6, let and const declarations allow you to create block-scoped variables.</p>
-<p>Operators<br>JavaScript’s numeric operators are +, -, *, / and % — which is the remainder operator (which is not the same as modulo.) Values are assigned using =, and there are also compound assignment statements such as += and -=. These extend out to x = x operator y.</p>
-<p>x += 5<br>x = x + 5<br>You can use ++ and – to increment and decrement respectively. These can be used as prefix or postfix operators.</p>
-<p>The + operator also does string concatenation:</p>
-<p>“hello” + “ world”; // “hello world”<br>If you add a string to a number (or other value) everything is converted in to a string first. This might catch you up:</p>
-<p>“3” + 4 + 5;  // “345”<br> 3 + 4 + “5”; // “75”<br>Adding an empty string to something is a useful way of converting it to a string itself.</p>
+<p>##Operators</p>
+<p>JavaScript’s numeric operators are +, -, *, / and % — which is the remainder operator (which is not the same as modulo.) Values are assigned using =, and there are also compound assignment statements such as += and -=. These extend out to x = x operator y.</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">x += <span class="number">5</span></div><div class="line">x = x + <span class="number">5</span></div></pre></td></tr></table></figure>
+<p>You can use <code>++</code> and <code>--</code> to increment and decrement respectively. These can be used as prefix or postfix operators.</p>
+<p>The <code>+</code> operator also does string concatenation:</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="string">"hello"</span> + <span class="string">" world"</span>; <span class="regexp">//</span> <span class="string">"hello world"</span></div></pre></td></tr></table></figure>
+<p>If you add a string to a number (or other value) everything is converted in to a string first. This might catch you up:</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="string">"3"</span> + <span class="number">4</span> + <span class="number">5</span>;  <span class="comment">// "345"</span></div><div class="line"> <span class="number">3</span> + <span class="number">4</span> + <span class="string">"5"</span>; <span class="comment">// "75"</span></div></pre></td></tr></table></figure>
+<p>Adding an empty string to something is a useful way of converting it to a string itself.</p>
 <p>Comparisons in JavaScript can be made using &lt;, &gt;, &lt;= and &gt;=. These work for both strings and numbers. Equality is a little less straightforward. The double-equals operator performs type coercion if you give it different types, with sometimes interesting results:</p>
-<p>123 == “123”; // true<br>1 == true; // true<br>To avoid type coercion and make sure your comparisons are always accurate, you should always use the triple-equals operator:</p>
-<p>123 === “123”; // false<br>1 === true;    // false<br>There are also != and !== operators.</p>
+<figure class="highlight basic"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">123 </span>== <span class="string">"123"</span>; // true</div><div class="line"><span class="symbol">1 </span>== true; // true</div></pre></td></tr></table></figure>
+<p>To avoid type coercion and make sure your comparisons are always accurate, you should always use the triple-equals operator:</p>
+<figure class="highlight basic"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">123 </span>=== <span class="string">"123"</span>; // false</div><div class="line"><span class="symbol">1 </span>=== true;    // false</div></pre></td></tr></table></figure>
+<p>There are also <code>!=</code> and <code>!==</code> operators.</p>
 <p>JavaScript also has bitwise operations. If you want to use them, they’re there.</p>
-<p>Control structures<br>JavaScript has a similar set of control structures to other languages in the C family. Conditional statements are supported by if and else; you can chain them together if you like:</p>
-<p>var name = “kittens”;<br>if (name == “puppies”) {<br>  name += “!”;<br>} else if (name == “kittens”) {<br>  name += “!!”;<br>} else {<br>  name = “!” + name;<br>}<br>name == “kittens!!”<br>JavaScript has while loops and do-while loops. The first is good for basic looping; the second for loops where you wish to ensure that the body of the loop is executed at least once:</p>
-<p>while (true) {<br>  // an infinite loop!<br>}</p>
-<p>var input;<br>do {<br>  input = get_input();<br>} while (inputIsNotValid(input))<br>JavaScript’s for loop is the same as that in C and Java: it lets you provide the control information for your loop on a single line.</p>
-<p>for (var i = 0; i &lt; 5; i++) {<br>  // Will execute 5 times<br>}<br>The &amp;&amp; and || operators use short-circuit logic, which means whether they will execute their second operand is dependent on the first. This is useful for checking for null objects before accessing their attributes:</p>
-<p>var name = o &amp;&amp; o.getName();<br>Or for setting default values:</p>
-<p>var name = otherName || “default”;<br>JavaScript has a ternary operator for conditional expressions:</p>
-<p>var allowed = (age &gt; 18) ? “yes” : “no”;<br>The switch statement can be used for multiple branches based on a number or string:</p>
-<p>switch(action) {<br>  case ‘draw’:<br>    drawIt();<br>    break;<br>  case ‘eat’:<br>    eatIt();<br>    break;<br>  default:<br>    doNothing();<br>}<br>If you don’t add a break statement, execution will “fall through” to the next level. This is very rarely what you want — in fact it’s worth specifically labeling deliberate fallthrough with a comment if you really meant it to aid debugging:</p>
-<p>switch(a) {<br>  case 1: // fallthrough<br>  case 2:<br>    eatIt();<br>    break;<br>  default:<br>    doNothing();<br>}<br>The default clause is optional. You can have expressions in both the switch part and the cases if you like; comparisons take place between the two using the === operator:</p>
-<p>switch(1 + 3) {<br>  case 2 + 2:<br>    yay();<br>    break;<br>  default:<br>    neverhappens();<br>}<br>Objects<br>JavaScript objects can be thought of as simple collections of name-value pairs. As such, they are similar to:</p>
-<p>Dictionaries in Python.<br>Hashes in Perl and Ruby.<br>Hash tables in C and C++.<br>HashMaps in Java.<br>Associative arrays in PHP.<br>The fact that this data structure is so widely used is a testament to its versatility. Since everything (bar core types) in JavaScript is an object, any JavaScript program naturally involves a great deal of hash table lookups. It’s a good thing they’re so fast!</p>
+<h2 id="Control-structures"><a href="#Control-structures" class="headerlink" title="Control structures"></a>Control structures</h2><p>JavaScript has a similar set of control structures to other languages in the C family. Conditional statements are supported by if and else; you can chain them together if you like:</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">var <span class="built_in">name</span> = <span class="string">"kittens"</span>;</div><div class="line"><span class="keyword">if</span> (<span class="built_in">name</span> == <span class="string">"puppies"</span>) &#123;</div><div class="line">  <span class="built_in">name</span> += <span class="string">"!"</span>;</div><div class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">name</span> == <span class="string">"kittens"</span>) &#123;</div><div class="line">  <span class="built_in">name</span> += <span class="string">"!!"</span>;</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">  <span class="built_in">name</span> = <span class="string">"!"</span> + <span class="built_in">name</span>;</div><div class="line">&#125;</div><div class="line"><span class="built_in">name</span> == <span class="string">"kittens!!"</span></div></pre></td></tr></table></figure>
+<p>JavaScript has while loops and do-while loops. The first is good for basic looping; the second for loops where you wish to ensure that the body of the loop is executed at least once:</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">while</span> (true) &#123;</div><div class="line">  <span class="comment">// an infinite loop!</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> <span class="keyword">input</span>;</div><div class="line"><span class="keyword">do</span> &#123;</div><div class="line">  <span class="keyword">input</span> = get_input();</div><div class="line">&#125; <span class="keyword">while</span> (inputIsNotValid(<span class="keyword">input</span>))</div></pre></td></tr></table></figure>
+<p>JavaScript’s for loop is the same as that in C and Java: it lets you provide the control information for your loop on a single line.</p>
+<figure class="highlight smali"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">for (var i = 0; i &lt; 5; i++) &#123;</div><div class="line">  // Will<span class="built_in"> execute </span>5 times</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>The <code>&amp;&amp;</code> and <code>||</code> operators use short-circuit logic, which means whether they will execute their second operand is dependent on the first. This is useful for checking for null objects before accessing their attributes:</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> name = o &amp;&amp; o.getName();</div></pre></td></tr></table></figure>
+<p>Or for setting default values:</p>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var name = otherName <span class="string">|| "</span>default<span class="string">";</span></div></pre></td></tr></table></figure>
+<p>JavaScript has a ternary operator for conditional expressions:</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> allowed = (age &gt; <span class="number">18</span>) ? <span class="string">"yes"</span> : <span class="string">"no"</span>;</div></pre></td></tr></table></figure>
+<p>The switch statement can be used for multiple branches based on a number or string:</p>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">switch</span>(action) &#123;</div><div class="line">  <span class="keyword">case</span> <span class="string">'draw'</span>:</div><div class="line">    drawIt();</div><div class="line">    <span class="keyword">break</span>;</div><div class="line">  <span class="keyword">case</span> <span class="string">'eat'</span>:</div><div class="line">    eatIt();</div><div class="line">    <span class="keyword">break</span>;</div><div class="line">  <span class="keyword">default</span>:</div><div class="line">    doNothing();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>If you don’t add a break statement, execution will “fall through” to the next level. This is very rarely what you want — in fact it’s worth specifically labeling deliberate fallthrough with a comment if you really meant it to aid debugging:</p>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">switch</span>(a) &#123;</div><div class="line">  <span class="keyword">case</span> <span class="number">1</span>: // fallthrough</div><div class="line">  <span class="keyword">case</span> 2:</div><div class="line">    eatIt();</div><div class="line">    <span class="keyword">break</span>;</div><div class="line">  <span class="keyword">default</span>:</div><div class="line">    doNothing();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>The default clause is optional. You can have expressions in both the switch part and the cases if you like; comparisons take place between the two using the === operator:</p>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">switch</span>(<span class="number">1</span> + <span class="number">3</span>) &#123;</div><div class="line">  <span class="keyword">case</span> <span class="number">2</span> + <span class="number">2</span>:</div><div class="line">    yay();</div><div class="line">    <span class="keyword">break</span>;</div><div class="line">  <span class="keyword">default</span>:</div><div class="line">    neverhappens();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Objects"><a href="#Objects" class="headerlink" title="Objects"></a>Objects</h2><p>JavaScript objects can be thought of as simple collections of name-value pairs. As such, they are similar to:</p>
+<ul>
+<li>Dictionaries in Python.</li>
+<li>Hashes in Perl and Ruby.</li>
+<li>Hash tables in C and C++.</li>
+<li>HashMaps in Java.</li>
+<li>Associative arrays in PHP.</li>
+</ul>
+<p>The fact that this data structure is so widely used is a testament to its versatility. Since everything (bar core types) in JavaScript is an object, any JavaScript program naturally involves a great deal of hash table lookups. It’s a good thing they’re so fast!</p>
 <p>The “name” part is a JavaScript string, while the value can be any JavaScript value — including more objects. This allows you to build data structures of arbitrary complexity.</p>
 <p>There are two basic ways to create an empty object:</p>
-<p>var obj = new Object();<br>And:</p>
-<p>var obj = {};<br>These are semantically equivalent; the second is called object literal syntax, and is more convenient. This syntax is also the core of JSON format and should be preferred at all times.</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> <span class="built_in">Object</span>();</div></pre></td></tr></table></figure>
+<p>And:</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;&#125;;</div></pre></td></tr></table></figure>
+<p>These are semantically equivalent; the second is called object literal syntax, and is more convenient. This syntax is also the core of JSON format and should be preferred at all times.</p>
 <p>Object literal syntax can be used to initialize an object in its entirety:</p>
-<p>var obj = {<br>  name: “Carrot”,<br>  “for”: “Max”,<br>  details: {<br>    color: “orange”,<br>    size: 12<br>  }<br>}<br>Attribute access can be chained together:</p>
-<p>obj.details.color; // orange<br>obj[“details”][“size”]; // 12<br>The following example creates an object prototype, Person, and instance of that prototype, You.</p>
-<p>function Person(name, age) {<br>  this.name = name;<br>  this.age = age;<br>}</p>
-<p>// Define an object<br>var You = new Person(“You”, 24);<br>// We are creating a new person named “You”<br>// (that was the first parameter, and the age..)<br>Once created, an object’s properties can again be accessed in one of two ways:</p>
-<p>obj.name = “Simon”;<br>var name = obj.name;<br>And…</p>
-<p>obj[“name”] = “Simon”;<br>var name = obj[“name”];<br>These are also semantically equivalent. The second method has the advantage that the name of the property is provided as a string, which means it can be calculated at run-time. However, using this method prevents some JavaScript engine and minifier optimizations being applied. It can also be used to set and get properties with names that are reserved words:</p>
-<p>obj.for = “Simon”; // Syntax error, because ‘for’ is a reserved word<br>obj[“for”] = “Simon”; // works fine<br>Starting in ECMAScript 5, reserved words may be used as object property names “in the buff”. This means that they don’t need to be “clothed” in quotes when defining object literals. See the ES5 Spec.<br>For more on objects and prototypes see: Object.prototype.</p>
-<p>Arrays<br>Arrays in JavaScript are actually a special type of object. They work very much like regular objects (numerical properties can naturally be accessed only using [] syntax) but they have one magic property called ‘length’. This is always one more than the highest index in the array.</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">var</span> obj = &#123;</div><div class="line">  name: <span class="string">"Carrot"</span>,</div><div class="line">  <span class="string">"for"</span>: <span class="string">"Max"</span>,</div><div class="line">  <span class="selector-tag">details</span>: &#123;</div><div class="line">    <span class="attribute">color</span>: <span class="string">"orange"</span>,</div><div class="line">    size: <span class="number">12</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Attribute access can be chained together:</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">obj.details.color; // orange</div><div class="line">obj[<span class="string">"details"</span>][<span class="symbol">"size"</span>]; // 12</div></pre></td></tr></table></figure>
+<p>The following example creates an object prototype, Person, and instance of that prototype, You.</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span><span class="params">(name, age)</span> </span>&#123;</div><div class="line">  <span class="keyword">this</span>.name = name;</div><div class="line">  <span class="keyword">this</span>.age = age;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// Define an object</span></div><div class="line"><span class="keyword">var</span> You = <span class="keyword">new</span> Person(<span class="string">"You"</span>, <span class="number">24</span>); </div><div class="line"><span class="comment">// We are creating a new person named "You" </span></div><div class="line"><span class="comment">// (that was the first parameter, and the age..)</span></div></pre></td></tr></table></figure>
+<p>Once created, an object’s properties can again be accessed in one of two ways:</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">obj.<span class="built_in">name</span> = <span class="string">"Simon"</span>;</div><div class="line">var <span class="built_in">name</span> = obj.<span class="built_in">name</span>;</div></pre></td></tr></table></figure>
+<p>And…</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">obj[<span class="string">"name"</span>] = <span class="string">"Simon"</span><span class="comment">;</span></div><div class="line">var name = obj[<span class="string">"name"</span>]<span class="comment">;</span></div></pre></td></tr></table></figure>
+<p>These are also semantically equivalent. The second method has the advantage that the name of the property is provided as a string, which means it can be calculated at run-time. However, using this method prevents some JavaScript engine and minifier optimizations being applied. It can also be used to set and get properties with names that are reserved words:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">obj.<span class="keyword">for</span> = <span class="string">"Simon"</span>; <span class="comment">// Syntax error, because 'for' is a reserved word</span></div><div class="line">obj[<span class="string">"for"</span>] = <span class="string">"Simon"</span>; <span class="comment">// works fine</span></div></pre></td></tr></table></figure>
+<p>Starting in ECMAScript 5, reserved words may be used as object property names “in the buff”. This means that they don’t need to be “clothed” in quotes when defining object literals. See the ES5 Spec.<br>For more on objects and prototypes see: <code>Object.prototype</code>.</p>
+<h2 id="Arrays"><a href="#Arrays" class="headerlink" title="Arrays"></a>Arrays</h2><p>Arrays in JavaScript are actually a special type of object. They work very much like regular objects (numerical properties can naturally be accessed only using [] syntax) but they have one magic property called ‘length’. This is always one more than the highest index in the array.</p>
 <p>One way of creating arrays is as follows:</p>
-<p>var a = new Array();<br>a[0] = “dog”;<br>a[1] = “cat”;<br>a[2] = “hen”;<br>a.length; // 3<br>A more convenient notation is to use an array literal:</p>
-<p>var a = [“dog”, “cat”, “hen”];<br>a.length; // 3<br>Note that array.length isn’t necessarily the number of items in the array. Consider the following:</p>
-<p>var a = [“dog”, “cat”, “hen”];<br>a[100] = “fox”;<br>a.length; // 101<br>Remember — the length of the array is one more than the highest index.</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var a = new Array()<span class="comment">;</span></div><div class="line">a[<span class="number">0</span>] = <span class="string">"dog"</span><span class="comment">;</span></div><div class="line">a[<span class="number">1</span>] = <span class="string">"cat"</span><span class="comment">;</span></div><div class="line">a[<span class="number">2</span>] = <span class="string">"hen"</span><span class="comment">;</span></div><div class="line">a.length<span class="comment">; // 3</span></div></pre></td></tr></table></figure>
+<p>A more convenient notation is to use an array literal:</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = [<span class="string">"dog"</span>, <span class="string">"cat"</span>, <span class="string">"hen"</span>];</div><div class="line">a.length; <span class="comment">// 3</span></div></pre></td></tr></table></figure>
+<p>Note that array.length isn’t necessarily the number of items in the array. Consider the following:</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var a = [<span class="string">"dog"</span>, <span class="string">"cat"</span>, <span class="string">"hen"</span>]<span class="comment">;</span></div><div class="line">a[<span class="number">100</span>] = <span class="string">"fox"</span><span class="comment">;</span></div><div class="line">a.length<span class="comment">; // 101</span></div></pre></td></tr></table></figure>
+<p>Remember — the length of the array is one more than the highest index.</p>
 <p>If you query a non-existent array index, you’ll get a value of undefined returned:</p>
-<p>typeof a[90]; // undefined<br>If you take the above into account, you can iterate over an array using the following:</p>
-<p>for (var i = 0; i &lt; a.length; i++) {<br>  // Do something with a[i]<br>}<br>You can iterate over an array using a for…in loop. Note that if someone added new properties to Array.prototype, they will also be iterated over by this loop.  Therefore this method is “not” recommended.</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">typeof a<span class="selector-attr">[90]</span>; <span class="comment">// undefined</span></div></pre></td></tr></table></figure>
+<p>If you take the above into account, you can iterate over an array using the following:</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (var <span class="built_in">i</span> = <span class="number">0</span>; <span class="built_in">i</span> &lt; a.<span class="built_in">length</span>; <span class="built_in">i</span>++) &#123;</div><div class="line">  // Do something with a[i]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>You can iterate over an array using a for…in loop. Note that if someone added new properties to Array.prototype, they will also be iterated over by this loop.  Therefore this method is “not” recommended.</p>
 <p>Another way of iterating over an array that was added with ECMAScript 5 is forEach():</p>
-<p>[“dog”, “cat”, “hen”].forEach(function(currentValue, index, array) {<br>  // Do something with currentValue or array[index]<br>});<br>If you want to append an item to an array simply do it like this:</p>
-<p>a.push(item);<br>Arrays come with a number of methods. See also the full documentation for array methods.</p>
-<p>Method name    Description<br>a.toString()    Returns a string with the toString() of each element separated by commas.<br>a.toLocaleString()    Returns a string with the toLocaleString() of each element separated by commas.<br>a.concat(item1[, item2[, …[, itemN]]])    Returns a new array with the items added on to it.<br>a.join(sep)    Converts the array to a string — with values delimited by the sep param<br>a.pop()    Removes and returns the last item.<br>a.push(item1, …, itemN)    Adds one or more items to the end.<br>a.reverse()    Reverses the array.<br>a.shift()    Removes and returns the first item.<br>a.slice(start[, end])    Returns a sub-array.<br>a.sort([cmpfn])    Takes an optional comparison function.<br>a.splice(start, delcount[, item1[, …[, itemN]]])    Lets you modify an array by deleting a section and replacing it with more items.<br>a.unshift(item1[, item2[, …[, itemN]]])    Prepends items to the start of the array.<br>Functions<br>Along with objects, functions are the core component in understanding JavaScript. The most basic function couldn’t be much simpler:</p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[<span class="string">"dog"</span>, <span class="string">"cat"</span>, <span class="string">"hen"</span>].forEach(<span class="keyword">function</span>(currentValue, index, <span class="keyword">array</span>) &#123;</div><div class="line">  // <span class="keyword">Do</span> something <span class="keyword">with</span> currentValue <span class="keyword">or</span> <span class="keyword">array</span>[index]</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>If you want to append an item to an array simply do it like this:</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">a<span class="selector-class">.push</span>(item);</div></pre></td></tr></table></figure>
+<p>Arrays come with a number of methods. See also the full documentation for array methods.</p>
+<table>
+<thead>
+<tr>
+<th>Method name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a.toString()</td>
+<td>Returns a string with the toString() of each element separated by commas.</td>
+</tr>
+<tr>
+<td>a.toLocaleString()</td>
+<td>Returns a string with the toLocaleString() of each element separated by commas.</td>
+</tr>
+<tr>
+<td>a.concat(item1[, item2[, …[, itemN]]])</td>
+<td>Returns a new array with the items added on to it.</td>
+</tr>
+<tr>
+<td>a.join(sep)</td>
+<td>Converts the array to a string — with values delimited by the sep param</td>
+</tr>
+<tr>
+<td>a.pop()</td>
+<td>Removes and returns the last item.</td>
+</tr>
+<tr>
+<td>a.push(item1, …, itemN)</td>
+<td>Adds one or more items to the end.</td>
+</tr>
+<tr>
+<td>a.reverse()</td>
+<td>Reverses the array.</td>
+</tr>
+<tr>
+<td>a.shift()</td>
+<td>Removes and returns the first item.</td>
+</tr>
+<tr>
+<td>a.slice(start[, end])</td>
+<td>Returns a sub-array.</td>
+</tr>
+<tr>
+<td>a.sort([cmpfn])</td>
+<td>Takes an optional comparison function.</td>
+</tr>
+<tr>
+<td>a.splice(start, delcount[, item1[, …[, itemN]]])</td>
+<td>Lets you modify an array by deleting a section and replacing it with more items.</td>
+</tr>
+<tr>
+<td>a.unshift(item1[, item2[, …[, itemN]]])</td>
+<td>Prepends items to the start of the array.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Functions"><a href="#Functions" class="headerlink" title="Functions"></a>Functions</h2><p>Along with objects, functions are the core component in understanding JavaScript. The most basic function couldn’t be much simpler:</p>
 <p>function add(x, y) {<br>  var total = x + y;<br>  return total;<br>}<br>This demonstrates a basic function. A JavaScript function can take 0 or more named parameters. The function body can contain as many statements as you like, and can declare its own variables which are local to that function. The return statement can be used to return a value at any time, terminating the function. If no return statement is used (or an empty return with no value), JavaScript returns undefined.</p>
 <p>The named parameters turn out to be more like guidelines than anything else. You can call a function without passing the parameters it expects, in which case they will be set to undefined.</p>
 <p>add(); // NaN<br>// You can’t perform addition on undefined<br>You can also pass in more arguments than the function is expecting:</p>
@@ -297,7 +404,7 @@ Array (which is a special kind of object">
 <p>x(6); // returns 11<br>y(7); // returns 27<br>Here’s what’s actually happening. Whenever JavaScript executes a function, a ‘scope’ object is created to hold the local variables created within that function. It is initialized with any variables passed in as function parameters. This is similar to the global object that all global variables and functions live in, but with a couple of important differences: firstly, a brand new scope object is created every time a function starts executing, and secondly, unlike the global object (which is accessible as this and in browsers as window) these scope objects cannot be directly accessed from your JavaScript code. There is no mechanism for iterating over the properties of the current scope object, for example.</p>
 <p>So when makeAdder() is called, a scope object is created with one property: a, which is the argument passed to the makeAdder() function. makeAdder() then returns a newly created function. Normally JavaScript’s garbage collector would clean up the scope object created for makeAdder() at this point, but the returned function maintains a reference back to that scope object. As a result, the scope object will not be garbage collected until there are no more references to the function object that makeAdder() returned.</p>
 <p>Scope objects form a chain called the scope chain, similar to the prototype chain used by JavaScript’s object system.</p>
-<p>A closure is the combination of a function and the scope object in which it was created. Closures let you save state — as such, they can often be used in place of objects. You can find <a href="http://stackoverflow.com/questions/111102/how-do-javascript-closures-work" target="_blank" rel="external">several excellent introductions to closures</a>.</p>
+<p>A closure is the combination of a function and the scope object in which it was created. Closures let you save state — as such, they can often be used in place of objects. You can find<br><a href="http://stackoverflow.com/questions/111102/how-do-javascript-closures-work" target="_blank" rel="external">several excellent introductions to closures</a>.</p>
 
 
 <!-- Tags -->
