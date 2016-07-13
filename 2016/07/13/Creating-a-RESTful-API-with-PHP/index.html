@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--Description-->
+    
+        <meta name="description" content="Source: http://coreymaynard.com/blog/creating-a-restful-api-with-php/
+BackgroundWhat is REST?REST, or in the full form, Representational State Transfe">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Terry Griffin">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Creating a RESTful API with PHP"/>
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Mwsu Web Dev"/>
+
+    <!--Page Cover-->
+    
+        <meta property="og:image" content="undefined"/>
+    
+
+    <!-- Title -->
+    
+    <title>Creating a RESTful API with PHP - Mwsu Web Dev</title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/Mwsu-Web-Dev/sass/main.css">
+
+    <!--[if lt IE 8]>
+        <script src="/Mwsu-Web-Dev/js/ie/html5shiv.js"></script>
+    <![endif]-->
+
+    <!--[if lt IE 8]>
+        <link rel="stylesheet" href="/Mwsu-Web-Dev/sass/ie8.css">
+    <![endif]-->
+
+    <!--[if lt IE 9]>
+        <link rel="stylesheet" href="/Mwsu-Web-Dev/sass/ie9.css">
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Menu -->
+        <!-- Header -->
+<header id="header">
+    <div class="inner">
+
+        <!-- Logo -->
+        <a href="/Mwsu-Web-Dev/" class="logo">
+            <span class="symbol"><img src="https://s3.amazonaws.com/f.cl.ly/items/242W2Q0B3b0O2P3e3d2y/ti_logo.png" alt="" /></span><span class="title">Mwsu Web Dev</span>
+        </a>
+
+        <!-- Nav -->
+        <nav>
+            <ul>
+                <li><a href="#menu">Menu</a></li>
+            </ul>
+        </nav>
+
+    </div>
+</header>
+
+<!-- Menu -->
+<nav id="menu">
+    <h2>Menu</h2>
+    <ul>
+        
+            <li>
+                <a href="/Mwsu-Web-Dev/">Home</a>
+            </li>
+        
+            <li>
+                <a href="/Mwsu-Web-Dev/archives">Archives</a>
+            </li>
+        
+            <li>
+                <a href="/Mwsu-Web-Dev/about.html">About</a>
+            </li>
+        
+    </ul>
+</nav>
+
+
+        <div id="main">
+            <div class="inner">
+
+                <!-- Main Content -->
+                
+
+    <h1>Creating a RESTful API with PHP</h1>
+
+
+
+<!-- Gallery -->
+
+
+<!-- Content -->
+<p><sub>Source: <a href="http://coreymaynard.com/blog/creating-a-restful-api-with-php/" target="_blank" rel="external">http://coreymaynard.com/blog/creating-a-restful-api-with-php/</a></sub></p>
+<h2 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h2><h3 id="What-is-REST"><a href="#What-is-REST" class="headerlink" title="What is REST?"></a>What is REST?</h3><p>REST, or in the full form, Representational State Transfer has become the standard design architecture for developing web APIs. At its heart REST is a stateless client-server relationship; this means that unlike many other approaches there is no client context being stored server side (no <a href="http://php.net/manual/en/features.sessions.php" target="_blank" rel="external">Sessions</a>). To counteract that, each request contains all the information necessary for the server to authenticate the user, and any session state data that must be sent as well.</p>
+<p>REST takes advantage of the HTTP request methods to layer itself into the existing HTTP architecture. These operations consist of the following:</p>
+<ul>
+<li><strong>GET</strong> - Used for basic read requests to the server</li>
+<li><strong>PUT</strong>- Used to modify an existing object on the server</li>
+<li><strong>POST</strong>- Used to create a new object on the server</li>
+<li><strong>DELETE</strong> - Used to remove an object on the server</li>
+</ul>
+<p>By creating URI endpoints that utilize these operations, a RESTful API is quickly assembled.</p>
+<h3 id="What-is-an-API"><a href="#What-is-an-API" class="headerlink" title="What is an API"></a>What is an API</h3><p>In this sense an API - which stands for Application Programming Interface - allows for publicly exposed methods of an application to be accessed and manipulated outside of the program itself. A common usage of an API is when you wish to obtain data from a application (such as a cake recipe) without having to actually visit the application itself (checking GreatRecipies.com). To allow this action to take place, the application has published an API that specifically allows for foreign applications to make calls to its data and return said data to the user from inside of the external application. On the web, this is often done through the use of RESTful URIs. In our cake example the API could contain the URI of</p>
+<blockquote>
+<p>greatrecipies.com/api/v1/recipe/cake</p>
+</blockquote>
+<p>The above is a RESTful endpoint. If you were to send a GET request to that URI the response might be a listing of the most recent cake recipes that the application has, a PUT request could add a new recipe to the database. If instead you were to request /cake/141 you would probably receive a detailed recipe for a unique cake. These are both examples of sensible endpoints that create a predictable way of interacting with the application.</p>
+<h2 id="Making-Our-Own-RESTful-API"><a href="#Making-Our-Own-RESTful-API" class="headerlink" title="Making Our Own RESTful API"></a>Making Our Own RESTful API</h2><p>The API that we’re going to construct here will consist of two classes. One Abstract class that will handle the parsing of the URI and returning the response, and one concrete class that will consist of just the endpoints for our API. By separating things like this, we get a reusable Abstract class that can become the basis of any other RESTful API and have isolated all the unique code for the application itself into a single location.</p>
+<p>However, before we can write either of those classes there’s a third part of this that must be taken care of.</p>
+<h3 id="Writing-a-htaccess-File"><a href="#Writing-a-htaccess-File" class="headerlink" title="Writing a .htaccess File"></a>Writing a .htaccess File</h3><p>A <code>.htaccess</code> file provides directory level configuration on how a web server will handle requests to resources in the directory the .htaccess file itself lives in. Since we do not wish to have to create new PHP files for every endpoint that our API will contain (for several reasons one of which being that it creates issues with maintainability); instead we wish to have all requests that come to our API be routed to the controller which will then determine where the request intended to go, and forward it on to the code to handle that specific endpoint. With that in mind, let’s create a .htacccess file:</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="section">&lt;IfModule mod_rewrite.c&gt;</span></div><div class="line"><span class="attribute"><span class="nomarkup">RewriteEngine</span></span> <span class="literal">On</span></div><div class="line"><span class="attribute"><span class="nomarkup">RewriteCond</span></span> <span class="variable">%&#123;REQUEST_FILENAME&#125;</span> !-f</div><div class="line"><span class="attribute"><span class="nomarkup">RewriteCond</span></span> <span class="variable">%&#123;REQUEST_FILENAME&#125;</span> !-d</div><div class="line"><span class="attribute"><span class="nomarkup">RewriteRule</span></span> api/v1/(.*)$ api/v1/api.php?request=<span class="number">$1</span><span class="meta"> [QSA,NC,L]</span></div><div class="line"><span class="section">&lt;/IfModule&gt;</span></div></pre></td></tr></table></figure>
+<h4 id="What-Did-That-Do"><a href="#What-Did-That-Do" class="headerlink" title="What Did That Do?"></a>What Did That Do?</h4><p>Let’s walk through this file. The first thing that we do here is wrap everything in a check for the existence of mod_rewrite.c; if that Apache module is present, we can continue. We then turn the RewriteEngine On and prepare it to work by giving it two rules. These rules say to perform a Rewrite if the requested URI does not match an existing file or directory name.</p>
+<p>In the next line declares the actual RewriteRule. This says that any requests to api/v1/ that is not an existing file or directory should instead be sent to api/v1/index.php. The (.*) marks a named capture, which is sent along to the MyAPI.php script as well in the request variable through the use of the $1 delimiter. At the end of that line are some flags that configure how the rewrite is performed. Firstly, [QSA] means that the named capture will be appended to the newly created URI. Second [NC] means that our URIs are not case sensitive. Finally, the [L] flag indicates that mod_rewrite should not process any additional rules if this rule matches.</p>
+<h3 id="Constructing-the-Abstract-Class"><a href="#Constructing-the-Abstract-Class" class="headerlink" title="Constructing the Abstract Class"></a>Constructing the Abstract Class</h3><p>With our .htaccess file in place, it is now time to create our Abstract Class. As mentioned earlier, this class will act as a wrapper for all of the custom endpoints that our API will be using. To that extent, it must be able to take in our request, grab the endpoint from the URI string, detect the HTTP method (GET, POST, PUT, DELETE) and assemble any additional data provided in the header or in the URI. Once that’s done, the abstract class will pass the request information on to a method in the concrete class to actually perform the work. We then return to the abstract class which will handle forming a HTTP response back to the client.</p>
+<p>Firstly we’re going to declare our class, its properties, and constructor:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">API</span></span></div><div class="line">&#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * Property: method</div><div class="line">     * The HTTP method this request was made in, either GET, POST, PUT or DELETE</div><div class="line">     */</div><div class="line">    <span class="keyword">protected</span> $method = <span class="string">''</span>;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * Property: endpoint</div><div class="line">     * The Model requested in the URI. eg: /files</div><div class="line">     */</div><div class="line">    <span class="keyword">protected</span> $endpoint = <span class="string">''</span>;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * Property: verb</div><div class="line">     * An optional additional descriptor about the endpoint, used for things that can</div><div class="line">     * not be handled by the basic methods. eg: /files/process</div><div class="line">     */</div><div class="line">    <span class="keyword">protected</span> $verb = <span class="string">''</span>;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * Property: args</div><div class="line">     * Any additional URI components after the endpoint and verb have been removed, in our</div><div class="line">     * case, an integer ID for the resource. eg: /&lt;endpoint&gt;/&lt;verb&gt;/&lt;arg0&gt;/&lt;arg1&gt;</div><div class="line">     * or /&lt;endpoint&gt;/&lt;arg0&gt;</div><div class="line">     */</div><div class="line">    <span class="keyword">protected</span> $args = <span class="keyword">Array</span>();</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * Property: file</div><div class="line">     * Stores the input of the PUT request</div><div class="line">     */</div><div class="line">     <span class="keyword">protected</span> $file = <span class="keyword">Null</span>;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * Constructor: __construct</div><div class="line">     * Allow for CORS, assemble and pre-process the data</div><div class="line">     */</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">($request)</span> </span>&#123;</div><div class="line">        header(<span class="string">"Access-Control-Allow-Orgin: *"</span>);</div><div class="line">        header(<span class="string">"Access-Control-Allow-Methods: *"</span>);</div><div class="line">        header(<span class="string">"Content-Type: application/json"</span>);</div><div class="line"></div><div class="line">        <span class="keyword">$this</span>-&gt;args = explode(<span class="string">'/'</span>, rtrim($request, <span class="string">'/'</span>));</div><div class="line">        <span class="keyword">$this</span>-&gt;endpoint = array_shift(<span class="keyword">$this</span>-&gt;args);</div><div class="line">        <span class="keyword">if</span> (array_key_exists(<span class="number">0</span>, <span class="keyword">$this</span>-&gt;args) &amp;&amp; !is_numeric(<span class="keyword">$this</span>-&gt;args[<span class="number">0</span>])) &#123;</div><div class="line">            <span class="keyword">$this</span>-&gt;verb = array_shift(<span class="keyword">$this</span>-&gt;args);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">$this</span>-&gt;method = $_SERVER[<span class="string">'REQUEST_METHOD'</span>];</div><div class="line">        <span class="keyword">if</span> (<span class="keyword">$this</span>-&gt;method == <span class="string">'POST'</span> &amp;&amp; array_key_exists(<span class="string">'HTTP_X_HTTP_METHOD'</span>, $_SERVER)) &#123;</div><div class="line">            <span class="keyword">if</span> ($_SERVER[<span class="string">'HTTP_X_HTTP_METHOD'</span>] == <span class="string">'DELETE'</span>) &#123;</div><div class="line">                <span class="keyword">$this</span>-&gt;method = <span class="string">'DELETE'</span>;</div><div class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> ($_SERVER[<span class="string">'HTTP_X_HTTP_METHOD'</span>] == <span class="string">'PUT'</span>) &#123;</div><div class="line">                <span class="keyword">$this</span>-&gt;method = <span class="string">'PUT'</span>;</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> <span class="keyword">Exception</span>(<span class="string">"Unexpected Header"</span>);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">switch</span>(<span class="keyword">$this</span>-&gt;method) &#123;</div><div class="line">        <span class="keyword">case</span> <span class="string">'DELETE'</span>:</div><div class="line">        <span class="keyword">case</span> <span class="string">'POST'</span>:</div><div class="line">            <span class="keyword">$this</span>-&gt;request = <span class="keyword">$this</span>-&gt;_cleanInputs($_POST);</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">case</span> <span class="string">'GET'</span>:</div><div class="line">            <span class="keyword">$this</span>-&gt;request = <span class="keyword">$this</span>-&gt;_cleanInputs($_GET);</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">case</span> <span class="string">'PUT'</span>:</div><div class="line">            <span class="keyword">$this</span>-&gt;request = <span class="keyword">$this</span>-&gt;_cleanInputs($_GET);</div><div class="line">            <span class="keyword">$this</span>-&gt;file = file_get_contents(<span class="string">"php://input"</span>);</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">default</span>:</div><div class="line">            <span class="keyword">$this</span>-&gt;_response(<span class="string">'Invalid Method'</span>, <span class="number">405</span>);</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>By declaring this an abstract class we’re prohibited by PHP from creating a concrete instance of this class. From there we can create some protected class members. A protected member can only be accessed in the class itself and children thereof, unlike a private variable which can only be accessed in the class that defined the member.</p>
+<h3 id="Let’s-Talk-About-CORS"><a href="#Let’s-Talk-About-CORS" class="headerlink" title="Let’s Talk About CORS"></a>Let’s Talk About CORS</h3><p>One of the core premises of an API is that clients on different domains than the one the API is hosted on will be connecting to the API to send and receive data. There is an inherit security risk here, as this can allow an attacker to create an imitation page and steal data sent back and forth. Therefore this ability must be explicitly enabled on pages that wish to allow what is called Cross-Origin Resource Sharing, aka CORS. One excellent resource to learn more about CORS is the website <a href="http://enable-cors.org/" target="_blank" rel="external">Enable CORS</a> - it was quite helpful to me as I was trying to understand things.</p>
+<p>For our API we need to make sure that this is enabled, so the very first thing that is done in the __construct method is to set some custom headers. The first two are the magic; firstly we allow requests from any origin to be processed by this page, next we allow for any HTTP method to be accepted.</p>
+<p>Once the surprisingly simple yet completely crucial step of allowing CORS requests has been completed, it becomes time for our script to understand what the client has asked of it. To do that we’re going to take the $request variable which will be sent to our script from the .htaccess file (remember? it contains the original URI that the client requested), and tear it apart into the components we need. Once it’s been exploded around the slash by pulling off the very first element we can grab the endpoint, if applicable the next slot in the array is the verb, and any remaining items are used as $args.</p>
+<p>The HTTP method will describe the purpose of this request. GET requests are easy to detect, but DELETE and PUT requests are hidden inside a POST request through the use of the HTTP_X_HTTP_METHOD header. Once a method has been picked, the appropriate data source is parsed and cleaned for safety before being executed.</p>
+<h3 id="Completing-the-Abstract-Class"><a href="#Completing-the-Abstract-Class" class="headerlink" title="Completing the Abstract Class"></a>Completing the Abstract Class</h3><p>The rest of the Abstract class comes next. Right now we’re missing a function that will call the methods in the concrete class, and then one that will handle returning the response. Here’s the rest of the abstract class:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">API</span></span></div><div class="line">&#123;</div><div class="line">    ...</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">processAPI</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (method_exists(<span class="keyword">$this</span>, <span class="keyword">$this</span>-&gt;endpoint)) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;_response(<span class="keyword">$this</span>-&gt;&#123;<span class="keyword">$this</span>-&gt;endpoint&#125;(<span class="keyword">$this</span>-&gt;args));</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;_response(<span class="string">"No Endpoint: $this-&gt;endpoint"</span>, <span class="number">404</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">function</span> <span class="title">_response</span><span class="params">($data, $status = <span class="number">200</span>)</span> </span>&#123;</div><div class="line">        header(<span class="string">"HTTP/1.1 "</span> . $status . <span class="string">" "</span> . <span class="keyword">$this</span>-&gt;_requestStatus($status));</div><div class="line">        <span class="keyword">return</span> json_encode($data);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">function</span> <span class="title">_cleanInputs</span><span class="params">($data)</span> </span>&#123;</div><div class="line">        $clean_input = <span class="keyword">Array</span>();</div><div class="line">        <span class="keyword">if</span> (is_array($data)) &#123;</div><div class="line">            <span class="keyword">foreach</span> ($data <span class="keyword">as</span> $k =&gt; $v) &#123;</div><div class="line">                $clean_input[$k] = <span class="keyword">$this</span>-&gt;_cleanInputs($v);</div><div class="line">            &#125;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            $clean_input = trim(strip_tags($data));</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> $clean_input;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">function</span> <span class="title">_requestStatus</span><span class="params">($code)</span> </span>&#123;</div><div class="line">        $status = <span class="keyword">array</span>(  </div><div class="line">            <span class="number">200</span> =&gt; <span class="string">'OK'</span>,</div><div class="line">            <span class="number">404</span> =&gt; <span class="string">'Not Found'</span>,   </div><div class="line">            <span class="number">405</span> =&gt; <span class="string">'Method Not Allowed'</span>,</div><div class="line">            <span class="number">500</span> =&gt; <span class="string">'Internal Server Error'</span>,</div><div class="line">        ); </div><div class="line">        <span class="keyword">return</span> ($status[$code])?$status[$code]:$status[<span class="number">500</span>]; </div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>The one function worth mentioning here is the <code>processAPI()</code> method. This is the one publicly exposed method in the API, and its job is to determine if the concrete class implements a method for the endpoint that the client requested. If it does, then it calls that method, otherwise a 404 response is returned. The rest of the new code is simply an array map of all the possible HTTP codes and an input sanitizer.</p>
+<p>That’s all there is for the Abstract class. Now, finally time to implement a Concrete example.</p>
+<h2 id="Creating-a-Concrete-API"><a href="#Creating-a-Concrete-API" class="headerlink" title="Creating a Concrete API"></a>Creating a Concrete API</h2><p>Think back to our talk earlier about Cross-Origin Resource Sharing (CORS). Remember how it introduces a security vulnerability? We’re going to work to close that as tightly as possible here by tying an Origin to a unique API Key. This means that only known and allowed external hosts will be able to connect to our API service through a pairing of their domain name and a uniquely generated API Key. For the purposes of this example I’m going to leave some of the code to verify the API Key abstracted out. Additionally our API will require a unique token in every request to verify the User.</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">require_once</span> <span class="string">'API.class.php'</span>;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyAPI</span> <span class="keyword">extends</span> <span class="title">API</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">protected</span> $User;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">($request, $origin)</span> </span>&#123;</div><div class="line">        <span class="keyword">parent</span>::__construct($request);</div><div class="line"></div><div class="line">        <span class="comment">// Abstracted out for example</span></div><div class="line">        $APIKey = <span class="keyword">new</span> Models\APIKey();</div><div class="line">        $User = <span class="keyword">new</span> Models\User();</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (!array_key_exists(<span class="string">'apiKey'</span>, <span class="keyword">$this</span>-&gt;request)) &#123;</div><div class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="keyword">Exception</span>(<span class="string">'No API Key provided'</span>);</div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (!$APIKey-&gt;verifyKey(<span class="keyword">$this</span>-&gt;request[<span class="string">'apiKey'</span>], $origin)) &#123;</div><div class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="keyword">Exception</span>(<span class="string">'Invalid API Key'</span>);</div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (array_key_exists(<span class="string">'token'</span>, <span class="keyword">$this</span>-&gt;request) &amp;&amp;</div><div class="line">             !$User-&gt;get(<span class="string">'token'</span>, <span class="keyword">$this</span>-&gt;request[<span class="string">'token'</span>])) &#123;</div><div class="line"></div><div class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="keyword">Exception</span>(<span class="string">'Invalid User Token'</span>);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">$this</span>-&gt;User = $User;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * Example of an Endpoint</div><div class="line">     */</div><div class="line">     <span class="keyword">protected</span> <span class="function"><span class="keyword">function</span> <span class="title">example</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (<span class="keyword">$this</span>-&gt;method == <span class="string">'GET'</span>) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="string">"Your name is "</span> . <span class="keyword">$this</span>-&gt;User-&gt;name;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">return</span> <span class="string">"Only accepts GET requests"</span>;</div><div class="line">        &#125;</div><div class="line">     &#125;</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+<h2 id="Using-the-API"><a href="#Using-the-API" class="headerlink" title="Using the API"></a>Using the API</h2><p>Creating the concrete class is as simple as that. For each additional endpoint you wish to have in your API, simply add new functions into the MyAPI class whose name match the endpoint. You can then use the $method and $verb and $args to create flow paths within those endpoints.</p>
+<p>To actually implement the API we need to create the PHP file that the .htaccess file is forwarding all of the requests to. In this example I named it api.php:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Requests from the same server don't have a HTTP_ORIGIN header</span></div><div class="line"><span class="keyword">if</span> (!array_key_exists(<span class="string">'HTTP_ORIGIN'</span>, $_SERVER)) &#123;</div><div class="line">    $_SERVER[<span class="string">'HTTP_ORIGIN'</span>] = $_SERVER[<span class="string">'SERVER_NAME'</span>];</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">try</span> &#123;</div><div class="line">    $API = <span class="keyword">new</span> MyAPI($_REQUEST[<span class="string">'request'</span>], $_SERVER[<span class="string">'HTTP_ORIGIN'</span>]);</div><div class="line">    <span class="keyword">echo</span> $API-&gt;processAPI();</div><div class="line">&#125; <span class="keyword">catch</span> (<span class="keyword">Exception</span> $e) &#123;</div><div class="line">    <span class="keyword">echo</span> json_encode(<span class="keyword">Array</span>(<span class="string">'error'</span> =&gt; $e-&gt;getMessage()));</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>If you visit <code>/api/v1/example</code> (and have the User and Token system setup) you should see the output from that endpoint there.</p>
+
+
+<!-- Tags -->
+
+
+
+<div class="tags">
+    
+</div>
+
+
+
+<!-- Comments -->
+<div>
+    
+    <hr />
+    <h3>Kommentare:</h3>
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+
+</div>
+
+
+
+            </div>
+        </div>
+
+        <!-- Footer -->
+<footer id="footer">
+    <div class="inner">
+        <section>
+            <h2>About</h2>
+            <div>
+                This theme was initially developed by <a href="http://html5up.net" target="_blank">HTML5 UP</a>. It is adapted for Hexo by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a>.<br />The source code is available on <a href="https://github.com/klugjo/hexo-theme-phantom" target="_blank">GitHub</a>.
+            </div>
+        </section>
+        <section>
+            <h2>Follow</h2>
+            <ul class="icons">
+                
+                    <li><a href="https://twitter.com/?lang=en" class="icon style2 fa-twitter" target="_blank" ><span class="label">Twitter</span></a></li>
+                
+                
+                    <li><a href="https://www.facebook.com/" class="icon style2 fa-facebook" target="_blank" ><span class="label">Facebook</span></a></li>
+                
+                
+                    <li><a href="https://www.instagram.com/" class="icon style2 fa-instagram" target="_blank" ><span class="label">Instagram</span></a></li>
+                
+                
+                    <li><a href="https://dribbble.com/" class="icon style2 fa-dribbble" target="_blank" ><span class="label">Dribbble</span></a></li>
+                
+                
+                    <li><a href="https://github.com/klugjo/hexo-theme-phantom/commits?author=klugjo" class="icon style2 fa-github" target="_blank" ><span class="label">GitHub</span></a></li>
+                
+                
+                    <li><a href="https://plus.google.com/" class="icon style2 fa-google-plus" target="_blank" ><span class="label">Google+</span></a></li>
+                
+                
+                    <li><a href="https://www.behance.net/" class="icon style2 fa-behance" target="_blank" ><span class="label">Behance</span></a></li>
+                
+                
+                    <li><a href="https://500px.com/" class="icon style2 fa-500px" target="_blank" ><span class="label">500px</span></a></li>
+                
+                
+                    <li><a href="\#" class="icon style2 fa-envelope-o" target="_blank" ><span class="label">Email</span></a></li>
+                
+                
+                    <li><a href="\#" class="icon style2 fa-rss" target="_blank" ><span class="label">RSS</span></a></li>
+                
+            </ul>
+        </section>
+        <ul class="copyright">
+            <li>&copy; Untitled. All rights reserved</li>
+            <li>Design: <a href="http://html5up.net" target="_blank">HTML5 UP</a></li>
+            <li>Hexo: <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></li>
+        </ul>
+    </div>
+</footer>
+    </div>
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="/Mwsu-Web-Dev/js/jquery.min.js"></script>
+
+<!-- skel -->
+<script src="/Mwsu-Web-Dev/js/skel.min.js"></script>
+
+<!-- Custom Code -->
+<script src="/Mwsu-Web-Dev/js/util.js"></script>
+
+<!--[if lte IE 8]>
+<script src="/Mwsu-Web-Dev/js/ie/respond.min.js"></script>
+<![endif]-->
+
+<!-- Custom Code -->
+<script src="/Mwsu-Web-Dev/js/main.js"></script>
+
+<!-- Gallery -->
+<script src="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+<script type="text/javascript">
+    var disqus_shortname = 'klugjo';
+
+    (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+</body>
+
+</html>
