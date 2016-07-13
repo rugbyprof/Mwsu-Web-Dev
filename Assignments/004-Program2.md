@@ -1,9 +1,9 @@
 Grab this zip file: http://mwsu-webdev/program2.zip
 
-1. Install phpmyadmin on your server
-2. Create a user called `web-dev`
-3. Create a database called `web-dev`
-4. Create a table in web-dev called users:
+- Install phpmyadmin on your server
+- Create a user called `web-dev`
+- Create a database called `web-dev`
+- Create a table in web-dev called users:
 
 ```sql 
 CREATE TABLE IF NOT EXISTS `users` (
@@ -17,3 +17,9 @@ CREATE TABLE IF NOT EXISTS `users` (
   UNIQUE KEY `email` (`email`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 ```
+
+- Fix the error on registration page to NOT display when initially loaded.
+- After a user is logged in, do NOT print the form, but provide a link (or button) to send the to the login page (login.php).
+- Then implement a login script that will authenticate them, and send them to "whereever" otherwise print an error message telling them to retry.
+- http://www.codingcage.com/2015/03/simple-login-and-signup-system-with-php.html
+- 
