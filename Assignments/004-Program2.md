@@ -1,4 +1,10 @@
-Grab this zip file: http://mwsu-webdev/program2.zip
+- Login to your server.
+- Go to `/var/www/html`
+- Create a folder called `program_2`
+- Change into that folder.
+- Run `wget http://mwsu-webdev/program2.zip`
+- Unzip program2 (if it errors, install zip with `apt-get install zip`)
+
 
 - Install phpmyadmin on your server
 - Create a user called `web-dev`
