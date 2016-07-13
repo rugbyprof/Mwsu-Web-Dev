@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--Description-->
+    
+        <meta name="description" content="source: http://stackoverflow.com/questions/549/the-definitive-guide-to-form-based-website-authentication
+Form-based authentication for websitesWe beli">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Terry Griffin">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="The definitive guide to form-based website authentication"/>
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Mwsu Web Dev"/>
+
+    <!--Page Cover-->
+    
+        <meta property="og:image" content="undefined"/>
+    
+
+    <!-- Title -->
+    
+    <title>The definitive guide to form-based website authentication - Mwsu Web Dev</title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/Mwsu-Web-Dev/sass/main.css">
+
+    <!--[if lt IE 8]>
+        <script src="/Mwsu-Web-Dev/js/ie/html5shiv.js"></script>
+    <![endif]-->
+
+    <!--[if lt IE 8]>
+        <link rel="stylesheet" href="/Mwsu-Web-Dev/sass/ie8.css">
+    <![endif]-->
+
+    <!--[if lt IE 9]>
+        <link rel="stylesheet" href="/Mwsu-Web-Dev/sass/ie9.css">
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Menu -->
+        <!-- Header -->
+<header id="header">
+    <div class="inner">
+
+        <!-- Logo -->
+        <a href="/Mwsu-Web-Dev/" class="logo">
+            <span class="symbol"><img src="https://s3.amazonaws.com/f.cl.ly/items/242W2Q0B3b0O2P3e3d2y/ti_logo.png" alt="" /></span><span class="title">Mwsu Web Dev</span>
+        </a>
+
+        <!-- Nav -->
+        <nav>
+            <ul>
+                <li><a href="#menu">Menu</a></li>
+            </ul>
+        </nav>
+
+    </div>
+</header>
+
+<!-- Menu -->
+<nav id="menu">
+    <h2>Menu</h2>
+    <ul>
+        
+            <li>
+                <a href="/Mwsu-Web-Dev/">Home</a>
+            </li>
+        
+            <li>
+                <a href="/Mwsu-Web-Dev/archives">Archives</a>
+            </li>
+        
+            <li>
+                <a href="/Mwsu-Web-Dev/about.html">About</a>
+            </li>
+        
+    </ul>
+</nav>
+
+
+        <div id="main">
+            <div class="inner">
+
+                <!-- Main Content -->
+                
+
+    <h1>The definitive guide to form-based website authentication</h1>
+
+
+
+<!-- Gallery -->
+
+
+<!-- Content -->
+<p><sub>source: <a href="http://stackoverflow.com/questions/549/the-definitive-guide-to-form-based-website-authentication" target="_blank" rel="external">http://stackoverflow.com/questions/549/the-definitive-guide-to-form-based-website-authentication</a></sub></p>
+<h2 id="Form-based-authentication-for-websites"><a href="#Form-based-authentication-for-websites" class="headerlink" title="Form-based authentication for websites"></a>Form-based authentication for websites</h2><p>We believe that Stack Overflow should not just be a resource for very specific technical questions, but also for general guidelines on how to solve variations on common problems. “Form based authentication for websites” should be a fine topic for such an experiment.</p>
+<h4 id="It-should-include-topics-such-as"><a href="#It-should-include-topics-such-as" class="headerlink" title="It should include topics such as:"></a>It should include topics such as:</h4><ul>
+<li>How to log in</li>
+<li>How to remain logged in</li>
+<li>Managing cookies (including recommended settings)</li>
+<li>SSL/HTTPS encryption</li>
+<li>How to store passwords</li>
+<li>Using secret questions</li>
+<li>Forgotten username/password functionality</li>
+<li>Use of nonces to prevent <a href="https://en.wikipedia.org/wiki/Cross-site_request_forgery" target="_blank" rel="external">cross-site request forgeries (CSRF)</a></li>
+<li><a href="http://openid.net/" target="_blank" rel="external">OpenID</a></li>
+<li>“Remember me” checkbox</li>
+<li>Browser autocompletion of usernames and passwords</li>
+<li>Secret URLs (public <a href="https://en.wikipedia.org/wiki/Uniform_Resource_Locator" target="_blank" rel="external">URL</a> protected by digest)</li>
+<li>Checking password strength</li>
+<li>E-mail validation</li>
+<li>and much more about <a href="http://en.wikipedia.org/wiki/Form-based_authentication" target="_blank" rel="external">form based authentication</a>…</li>
+</ul>
+<h3 id="It-should-not-include-things-like"><a href="#It-should-not-include-things-like" class="headerlink" title="It should not include things like:"></a>It should not include things like:</h3><ul>
+<li>Roles and authorization</li>
+<li>HTTP basic authentication</li>
+</ul>
+<h3 id="Please-help-us-by"><a href="#Please-help-us-by" class="headerlink" title="Please help us by:"></a>Please help us by:</h3><ul>
+<li>Suggesting subtopics</li>
+<li>Submitting good articles about this subject</li>
+<li>Editing the official answer</li>
+</ul>
+<h2 id="PART-I-How-To-Log-In"><a href="#PART-I-How-To-Log-In" class="headerlink" title="PART I: How To Log In"></a>PART I: How To Log In</h2><p>We’ll assume you already know how to build a login+password HTML form which POSTs the values to a script on the server side for authentication. The sections below will deal with patterns for sound practical auth, and how to avoid the most common security pitfalls.</p>
+<h3 id="To-HTTPS-or-not-to-HTTPS"><a href="#To-HTTPS-or-not-to-HTTPS" class="headerlink" title="To HTTPS or not to HTTPS?"></a>To HTTPS or not to HTTPS?</h3><p>Unless the connection is already secure (that is, tunneled through HTTPS using SSL/TLS), your login form values will be sent in cleartext, which allows anyone eavesdropping on the line between browser and web server will be able to read logins as they pass through. This type of wiretapping is done routinely by governments, but in general we won’t address ‘owned’ wires other than to say this: If you are protecting anything non-trivial, use HTTPS.</p>
+<p>In essence, the only practical way to protect against wiretapping / packet sniffing during login is by using HTTPS or another certificate-based encryption scheme (for example, TLS) or a proven &amp; tested challenge-response scheme (for example, the Diffie-Hellman-based SRP). Any other method can be easily circumvented by an eavesdropping attacker.</p>
+<p>Of course, if you are willing to get a little bit impractical, you could also employ some form of two-factor authentication scheme (e.g. the Google Authenticator app, a physical ‘cold war style’ codebook, or an RSA key generator dongle). If applied correctly, this could work even with an unsecured connection, but it’s hard to imagine that a dev would be willing to implement two-factor auth but not SSL.</p>
+<h4 id="Do-not-Roll-your-own-JavaScript-encryption-hashing"><a href="#Do-not-Roll-your-own-JavaScript-encryption-hashing" class="headerlink" title="(Do not) Roll-your-own JavaScript encryption/hashing"></a>(Do not) Roll-your-own JavaScript encryption/hashing</h4><p>Given the nonzero cost and perceived technical difficulty of setting up an SSL certificate on your website, some developers are tempted to roll their own in-browser hashing or encryption schemes in order to avoid passing cleartext logins over an unsecured wire.</p>
+<p>While this is a noble thought, it is essentially useless (and can be a security flaw) unless it is combined with one of the above - that is, either securing the line with strong encryption or using a tried-and-tested challenge-response mechanism (if you don’t know what that is, just know that it is one of the most difficult to prove, most difficult to design, and most difficult to implement concepts in digital security).</p>
+<p>While it is true that hashing the password can be effective against password disclosure, it is vulnerable to replay attacks, Man-In-The-Middle attacks / hijackings (if an attacker can inject a few bytes into your unsecured HTML page before it reaches your browser, they can simply comment out the hashing in the JavaScript), or brute-force attacks (since you are handing the attacker both username, salt and hashed password).</p>
+<h4 id="CAPTCHAS-against-humanity"><a href="#CAPTCHAS-against-humanity" class="headerlink" title="CAPTCHAS against humanity"></a>CAPTCHAS against humanity</h4><p><a href="http://en.wikipedia.org/wiki/CAPTCHA" target="_blank" rel="external">CAPTCHAs</a> are meant to thwart one specific category of attack: automated dictionary/brute force trial-and-error with no human operator. There is no doubt that this is a real threat, however there are ways of dealing with it seamlessly that don’t require a CAPTCHA, specifically properly designed serverside login throttling schemes - we’ll discuss those later.</p>
+<p>Know that CAPTCHA implementations are not created alike; they often aren’t human-solvable, most of them are actually ineffective against bots, all of them are ineffective against cheap third-world labor (according to <a href="http://en.wikipedia.org/wiki/OWASP" target="_blank" rel="external">OWASP</a>, the current sweatshop rate is $12 per 500 tests), and some implementations may be technically illegal in some countries (see <a href="http://www.owasp.org/index.php/Guide_to_Authentication" target="_blank" rel="external">OWASP Guide To Authentication</a>). If you must use a CAPTCHA, use Google’s <a href="http://en.wikipedia.org/wiki/ReCAPTCHA" target="_blank" rel="external">reCAPTCHA</a>, since it is OCR-hard by definition (since it uses already OCR-misclassified book scans) and tries very hard to be user-friendly.</p>
+<p>Personally, I tend to find CAPTCHAS annoying, and use them only as a last resort when a user has failed to login a number of times and throttling delays are maxxed out. This will happen rarely enough to be acceptable, and it strengthens the system as a whole.</p>
+<h4 id="Storing-Passwords-Verifying-logins"><a href="#Storing-Passwords-Verifying-logins" class="headerlink" title="Storing Passwords / Verifying logins"></a>Storing Passwords / Verifying logins</h4><p>This may finally be common knowledge after all the highly-publicized hacks and user data leaks we’ve seen in recent years, but it has to be said: Do not store passwords in cleartext in your database. User databases are routinely hacked, leaked or gleaned through SQL injection, and if you are storing raw, plaintext passwords, that is instant game over for your login security.</p>
+<p>So if you can’t store the password, how do you check that the login+password combination POSTed from the login form is correct? The answer is hashing using a <a href="https://en.wikipedia.org/wiki/Key_derivation_function" target="_blank" rel="external">key derivation function</a>. Whenever a new user is created or a password is changed, you take the password and run it through a KDF, such as bcrypt, scrypt or PBKDF2, turning the cleartext password (“correcthorsebatterystaple”) into a long, random-looking string, which is a lot safer to store in your database. To verify a login, you run the same hash function on the entered password, this time passing in the salt and compare the resulting hash string to the value stored in your database. bcrypt and scrypt store the salt with the hash already. Check out this article on sec.stackexchange for more detailed information.</p>
+<p>The reason a salt is used is because hashing in itself is not sufficient – you’ll want to add a so-called ‘salt’ to protect the hash against <a href="https://en.wikipedia.org/wiki/Rainbow_table" target="_blank" rel="external">rainbow tables</a>. A salt effectively prevents two passwords that exactly match from being stored as the same hash value, preventing the whole database being scanned in one run if an attacker is executing a password guessing attack.</p>
+<p>A cryptographic hash should not be used for password storage because user selected passwords are not strong enough (i.e. do not usually contain enough entropy) and a password guessing attack could be completed in a relatively short time by an attacker with access to the hashes. This is why a KDF is used - these effectively “<a href="https://en.wikipedia.org/wiki/Key_stretching" target="_blank" rel="external">stretch the key</a>“ meaning that each password guess an attacker makes involves iterating the hashing algorithm multiple times, for example 10,000 times, making the attacker’s password guessing 10,000 times slower.</p>
+<h4 id="Session-data-“You-are-logged-in-as-Spiderman69”"><a href="#Session-data-“You-are-logged-in-as-Spiderman69”" class="headerlink" title="Session data - “You are logged in as Spiderman69”"></a>Session data - “You are logged in as Spiderman69”</h4><p>Once the server has verified the login and password against your user database and found a match, the system needs a way to remember that the browser has been authenticated. This fact should only ever be stored server side in the session data.</p>
+<blockquote>
+<p>If you are unfamiliar with session data, here’s how it works: A single randomly-generated string is stored in an expiring cookie and used to reference a collection of data - the session data - which is stored on the server. If you are using an MVC framework, this is undoubtedly handled already.</p>
+</blockquote>
+<p>If at all possible, make sure the session cookie has the secure and HTTP Only flags set when sent to the browser. The httponly flag provides some protection against the cookie being read by a XSS attack. The secure flag ensures that the cookie is only sent back via HTTPS, and therefore protects against network sniffing attacks. The value of the cookie should not be predictable. Where a cookie referencing a non-existent session is presented, its value should be replaced immediately to prevent <a href="https://www.owasp.org/index.php/Session_Fixation" target="_blank" rel="external">session fixation</a>.</p>
+<h2 id="PART-II-How-To-Remain-Logged-In-The-Infamous-“Remember-Me”-Checkbox"><a href="#PART-II-How-To-Remain-Logged-In-The-Infamous-“Remember-Me”-Checkbox" class="headerlink" title="PART II: How To Remain Logged In - The Infamous “Remember Me” Checkbox"></a>PART II: How To Remain Logged In - The Infamous “Remember Me” Checkbox</h2><p>Persistent Login Cookies (“remember me” functionality) are a danger zone; on the one hand, they are entirely as safe as conventional logins when users understand how to handle them; and on the other hand, they are an enormous security risk in the hands of careless users, who may use them on public computers and forget to log out, and who may not know what browser cookies are or how to delete them.</p>
+<p>Personally, I like persistent logins for the web sites I visit on a regular basis, but I know how to handle them safely. If you are positive that your users know the same, you can use persistent logins with a clean conscience. If not - well, then you may subscribe to the philosophy that users who are careless with their login credentials brought it upon themselves if they get hacked. It’s not like we go to our user’s houses and tear off all those facepalm-inducing Post-It notes with passwords they have lined up on the edge of their monitors, either.</p>
+<p>Of course, some systems can’t afford to have any accounts hacked; for such systems, there is no way you can justify having persistent logins.</p>
+<p>If you DO decide to implement persistent login cookies, this is how you do it:</p>
+<p>First, take some time to read <a href="https://paragonie.com/blog/2015/04/secure-authentication-php-with-long-term-persistence" target="_blank" rel="external">Paragon Initiative’s article</a> on the subject. You’ll need to get a bunch of elements right, and the article does a great job of explaining each.<br>And just to reiterate one of the most common pitfalls, DO NOT STORE THE PERSISTENT LOGIN COOKIE (TOKEN) IN YOUR DATABASE, ONLY A HASH OF IT! The login token is Password Equivalent, so if an attacker got their hands on your database, they could use the tokens to log in to any account, just as if they were cleartext login-password combinations. Therefore, use hashing (according to <a href="http://security.stackexchange.com/a/63438/5002" target="_blank" rel="external">http://security.stackexchange.com/a/63438/5002</a> a weak hash will do just fine for this purpose) when storing persistent login tokens.</p>
+<h2 id="PART-III-Using-Secret-Questions"><a href="#PART-III-Using-Secret-Questions" class="headerlink" title="PART III: Using Secret Questions"></a>PART III: Using Secret Questions</h2><p><strong><em>Don’t implement ‘secret questions’</em></strong>. The ‘secret questions’ feature is a security anti-pattern. Read the paper from link number 4 from the MUST-READ list. You can ask Sarah Palin about that one, after her Yahoo! email account got hacked during a previous presidential campaign because the answer to her security question was… “Wasilla High School”!</p>
+<p>Even with user-specified questions, it is highly likely that most users will choose either:</p>
+<ul>
+<li>A ‘standard’ secret question like mother’s maiden name or favourite pet</li>
+<li>A simple piece of trivia that anyone could lift from their blog, LinkedIn profile, or similar</li>
+<li>Any question that is easier to answer than guessing their password. Which, for any decent password, is every question you can imagine</li>
+</ul>
+<p><strong><em>In conclusion, security questions are inherently insecure in virtually all their forms and variations, and should not be employed in an authentication scheme for any reason.</em></strong></p>
+<p>The true reason why security questions even exist in the wild is that they conveniently save the cost of a few support calls from users who can’t access their email to get to a reactivation code. This at the expense of security and Sarah Palin’s reputation. Worth it? Probably not.</p>
+<h2 id="PART-IV-Forgotten-Password-Functionality"><a href="#PART-IV-Forgotten-Password-Functionality" class="headerlink" title="PART IV: Forgotten Password Functionality"></a>PART IV: Forgotten Password Functionality</h2><p>I already mentioned why you should never use security questions for handling forgotten/lost user passwords; it also goes without saying that you should never e-mail users their actual passwords. There are at least two more all-too-common pitfalls to avoid in this field:</p>
+<ol>
+<li>Don’t reset a forgotten password to an autogenerated strong password - such passwords are notoriously hard to remember, which means the user must either change it or write it down - say, on a bright yellow Post-It on the edge of their monitor. Instead of setting a new password, just let users pick a new one right away - which is what they want to do anyway.<br>2.Always hash the lost password code/token in the database. AGAIN, this code is another example of a Password Equivalent, so it MUST be hashed in case an attacker got their hands on your database. When a lost password code is requested, send the plaintext code to the user’s email address, then hash it, save the hash in your database – and throw away the original. Just like a password or a persistent login token.</li>
+</ol>
+<p>A final note: always make sure your interface for entering the ‘lost password code’ is at least as secure as your login form itself, or an attacker will simply use this to gain access instead. Making sure you generate very long ‘lost password codes’ (for example, 16 case sensitive alphanumeric characters) is a good start, but consider adding the same throttling scheme that you do for the login form itself.</p>
+<h2 id="PART-V-Checking-Password-Strength"><a href="#PART-V-Checking-Password-Strength" class="headerlink" title="PART V: Checking Password Strength"></a>PART V: Checking Password Strength</h2><p>First, you’ll want to read this small article for a reality check: <a href="http://www.whatsmypass.com/?p=415" target="_blank" rel="external">The 500 most common passwords</a></p>
+<p>Okay, so maybe the list isn’t the canonical list of most common passwords on any system anywhere ever, but it’s a good indication of how poorly people will choose their passwords when there is no enforced policy in place. Plus, the list looks frighteningly close to home when you compare it to publicly available analyses of recently stolen passwords.</p>
+<p>So: With no minimum password strength requirements, 2% of users use one of the top 20 most common passwords. Meaning: if an attacker gets just 20 attempts, 1 in 50 accounts on your website will be crackable.</p>
+<p>Thwarting this requires calculating the entropy of a password and then applying a threshold. The National Institute of Standards and Technology (NIST) <a href="http://en.wikipedia.org/wiki/Password_strength#NIST_Special_Publication_800-63" target="_blank" rel="external">Special Publication 800-63</a> has a set of very good suggestions. That, when combined with a dictionary and keyboard layout analysis (for example, ‘qwertyuiop’ is a bad password), can <a href="http://cubicspot.blogspot.com/2012/01/how-to-calculate-password-strength-part.html" target="_blank" rel="external">reject 99% of all poorly selected passwords</a> at a level of 18 bits of entropy. Simply calculating password strength and <a href="https://blogs.dropbox.com/tech/2012/04/zxcvbn-realistic-password-strength-estimation/" target="_blank" rel="external">showing a visual strength</a> meter to a user is good, but insufficient. Unless it is enforced, a lot of users will most likely ignore it.</p>
+<p>And for a refreshing take on user-friendliness of high-entropy passwords, Randall Munroe’s <a href="https://xkcd.com/936/" target="_blank" rel="external">Password Strength xkcd</a> is highly recommended.</p>
+<h2 id="PART-VI-Much-More-Or-Preventing-Rapid-Fire-Login-Attempts"><a href="#PART-VI-Much-More-Or-Preventing-Rapid-Fire-Login-Attempts" class="headerlink" title="PART VI: Much More - Or: Preventing Rapid-Fire Login Attempts"></a>PART VI: Much More - Or: Preventing Rapid-Fire Login Attempts</h2><p>First, have a look at the numbers: Password Recovery Speeds - How long will your password stand up</p>
+<p>If you don’t have the time to look through the tables in that link, here’s the list of them:</p>
+<p>It takes virtually no time to crack a weak password, even if you’re cracking it with an abacus<br>It takes virtually no time to crack an alphanumeric 9-character password, if it is case insensitive<br>It takes virtually no time to crack an intricate, symbols-and-letters-and-numbers, upper-and-lowercase password, if it is less than 8 characters long (a desktop PC can search the entire keyspace up to 7 characters in a matter of days or even hours)<br>It would, however, take an inordinate amount of time to crack even a 6-character password, if you were limited to one attempt per second!<br>So what can we learn from these numbers? Well, lots, but we can focus on the most important part: the fact that preventing large numbers of rapid-fire successive login attempts (ie. the brute force attack) really isn’t that difficult. But preventing it right isn’t as easy as it seems.</p>
+<p>Generally speaking, you have three choices that are all effective against brute-force attacks (and dictionary attacks, but since you are already employing a strong passwords policy, they shouldn’t be an issue):</p>
+<p>Present a CAPTCHA after N failed attempts (annoying as hell and often ineffective – but I’m repeating myself here)<br>Locking accounts and requiring email verification after N failed attempts (this is a DoS attack waiting to happen)<br>And finally, login throttling: that is, setting a time delay between attempts after N failed attempts (yes, DoS attacks are still possible, but at least they are far less likely and a lot more complicated to pull off).</p>
+<p><strong><em>Best practice #1:</em></strong> A short time delay that increases with the number of failed attempts, like:</p>
+<ul>
+<li>1 failed attempt = no delay</li>
+<li>2 failed attempts = 2 sec delay</li>
+<li>3 failed attempts = 4 sec delay</li>
+<li>4 failed attempts = 8 sec delay</li>
+<li>5 failed attempts = 16 sec delay</li>
+<li>etc.</li>
+</ul>
+<p>DoS attacking this scheme would be very impractical, since the resulting lockout time is slightly larger than the sum of the previous lockout times.</p>
+<blockquote>
+<p>To clarify: The delay is not a delay before returning the response to the browser. It is more like a timeout or refractory period during which login attempts to a specific account or from a specific IP address will not be accepted or evaluated at all. That is, correct credentials will not return in a successful login, and incorrect credentials will not trigger a delay increase.</p>
+</blockquote>
+<p><strong><em>Best practice #2:</em></strong> A medium length time delay that goes into effect after N failed attempts, like:</p>
+<p>1-4 failed attempts = no delay<br>5 failed attempts = 15-30 min delay<br>DoS attacking this scheme would be quite impractical, but certainly doable. Also, it might be relevant to note that such a long delay can be very annoying for a legitimate user. Forgetful users will dislike you.</p>
+<p><strong><em>Best practice #3:</em></strong> Combining the two approaches - either a fixed, short time delay that goes into effect after N failed attempts, like:</p>
+<ul>
+<li>1-4 failed attempts = no delay</li>
+<li>5+ failed attempts = 20 sec delay</li>
+</ul>
+<p>Or, an increasing delay with a fixed upper bound, like:</p>
+<p>1 failed attempt = 5 sec delay<br>2 failed attempts = 15 sec delay<br>3+ failed attempts = 45 sec delay<br>This final scheme was taken from the OWASP best-practices suggestions (link 1 from the MUST-READ list), and should be considered best practice, even if it is admittedly on the restrictive side.</p>
+<blockquote>
+<p>As a rule of thumb however, I would say: the stronger your password policy is, the less you have to bug users with delays. If you require strong (case-sensitive alphanumerics + required numbers and symbols) 9+ character passwords, you could give the users 2-4 non-delayed password attempts before activating the throttling.</p>
+</blockquote>
+<p>DoS attacking this final login throttling scheme would be very impractical. And as a final touch, always allow persistent (cookie) logins (and/or a CAPTCHA-verified login form) to pass through, so legitimate users won’t even be delayed while the attack is in progress. That way, the very impractical DoS attack becomes an extremely impractical attack.</p>
+<p>Additionally, it makes sense to do more aggressive throttling on admin accounts, since those are the most attractive entry points</p>
+<h2 id="PART-VII-Distributed-Brute-Force-Attacks"><a href="#PART-VII-Distributed-Brute-Force-Attacks" class="headerlink" title="PART VII: Distributed Brute Force Attacks"></a>PART VII: Distributed Brute Force Attacks</h2><p>Just as an aside, more advanced attackers will try to circumvent login throttling by ‘spreading their activities’:</p>
+<p>Distributing the attempts on a botnet to prevent IP address flagging<br>Rather than picking one user and trying the 50.000 most common passwords (which they can’t, because of our throttling), they will pick THE most common password and try it against 50.000 users instead. That way, not only do they get around maximum-attempts measures like CAPTCHAs and login throttling, their chance of success increases as well, since the number 1 most common password is far more likely than number 49.995<br>Spacing the login requests for each user account, say, 30 seconds apart, to sneak under the radar<br>Here, the best practice would be logging the number of failed logins, system-wide, and using a running average of your site’s bad-login frequency as the basis for an upper limit that you then impose on all users.</p>
+<p>Too abstract? Let me rephrase:</p>
+<p>Say your site has had an average of 120 bad logins per day over the past 3 months. Using that (running average), your system might set the global limit to 3 times that – ie. 360 failed attempts over a 24 hour period. Then, if the total number of failed attempts across all accounts exceeds that number within one day (or even better, monitor the rate of acceleration and trigger on a calculated treshold), it activates system-wide login throttling - meaning short delays for ALL users (still, with the exception of cookie logins and/or backup CAPTCHA logins).</p>
+<p>I also posted a question with more details and a really good discussion of how to avoid tricky pitfals in fending off distributed brute force attacks</p>
+<h2 id="PART-VIII-Two-Factor-Authentication-and-Authentication-Providers"><a href="#PART-VIII-Two-Factor-Authentication-and-Authentication-Providers" class="headerlink" title="PART VIII: Two-Factor Authentication and Authentication Providers"></a>PART VIII: Two-Factor Authentication and Authentication Providers</h2><p>Credentials can be compromised, whether by exploits, passwords being written down and lost, laptops with keys being stolen, or users entering logins into phishing sites. Logins can be further protected with two-factor authentication, which use out-of-band factors such as single-use codes received from a phone call, SMS message, app, or dongle. Several providers offer two-factor authentication services.</p>
+<p>Authentication can be completely delegated to a single-sign-on service, where another provider handles collecting credentials. This pushes the problem to a trusted third party. Google and Twitter both provide standards-based SSO services, while Facebook provides a similar proprietary solution.</p>
+<p>MUST-READ LINKS About Web Authentication</p>
+<ul>
+<li><a href="http://www.owasp.org/index.php/Guide_to_Authentication" target="_blank" rel="external">OWASP Guide To Authentication</a> / <a href="https://www.owasp.org/index.php/Authentication_Cheat_Sheet" target="_blank" rel="external">OWASP Authentication Cheat Sheet</a></li>
+<li><a href="https://pdos.csail.mit.edu/papers/webauth:sec10.pdf" target="_blank" rel="external">Dos and Don’ts of Client Authentication on the Web (very readable MIT research paper)</a></li>
+<li><a href="http://en.wikipedia.org/wiki/HTTP_cookie#Drawbacks_of_cookies" target="_blank" rel="external">Wikipedia: HTTP cookie</a></li>
+<li><a href="http://cups.cs.cmu.edu/soups/2008/proceedings/p13Rabkin.pdf" target="_blank" rel="external">Personal knowledge questions for fallback authentication: Security questions in the era of Facebook (very readable Berkeley research paper)</a></li>
+<li><a href="https://paragonie.com/blog/2015/04/secure-authentication-php-with-long-term-persistence#title.2" target="_blank" rel="external">Implementing Secure User Authentication in PHP Applications with Long-Term Persistence (Login with “Remember Me” Cookies)</a></li>
+</ul>
+
+
+<!-- Tags -->
+
+
+
+<div class="tags">
+    <a href="/Mwsu-Web-Dev/tags/validation/" class="button small">validation</a> <a href="/Mwsu-Web-Dev/tags/security/" class="button small">security</a> <a href="/Mwsu-Web-Dev/tags/authentication/" class="button small">authentication</a> <a href="/Mwsu-Web-Dev/tags/form/" class="button small">form</a>
+</div>
+
+
+
+<!-- Comments -->
+<div>
+    
+    <hr />
+    <h3>Comments:</h3>
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+
+</div>
+
+
+
+            </div>
+        </div>
+
+        <!-- Footer -->
+<footer id="footer">
+    <div class="inner">
+        <section>
+            <h2>About</h2>
+            <div>
+                This theme was initially developed by <a href="http://html5up.net" target="_blank">HTML5 UP</a>. It is adapted for Hexo by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a>.<br />The source code is available on <a href="https://github.com/klugjo/hexo-theme-phantom" target="_blank">GitHub</a>.
+            </div>
+        </section>
+        <section>
+            <h2>Follow</h2>
+            <ul class="icons">
+                
+                    <li><a href="https://twitter.com/?lang=en" class="icon style2 fa-twitter" target="_blank" ><span class="label">Twitter</span></a></li>
+                
+                
+                    <li><a href="https://www.facebook.com/" class="icon style2 fa-facebook" target="_blank" ><span class="label">Facebook</span></a></li>
+                
+                
+                    <li><a href="https://www.instagram.com/" class="icon style2 fa-instagram" target="_blank" ><span class="label">Instagram</span></a></li>
+                
+                
+                    <li><a href="https://dribbble.com/" class="icon style2 fa-dribbble" target="_blank" ><span class="label">Dribbble</span></a></li>
+                
+                
+                    <li><a href="https://github.com/klugjo/hexo-theme-phantom/commits?author=klugjo" class="icon style2 fa-github" target="_blank" ><span class="label">GitHub</span></a></li>
+                
+                
+                    <li><a href="https://plus.google.com/" class="icon style2 fa-google-plus" target="_blank" ><span class="label">Google+</span></a></li>
+                
+                
+                    <li><a href="https://www.behance.net/" class="icon style2 fa-behance" target="_blank" ><span class="label">Behance</span></a></li>
+                
+                
+                    <li><a href="https://500px.com/" class="icon style2 fa-500px" target="_blank" ><span class="label">500px</span></a></li>
+                
+                
+                    <li><a href="\#" class="icon style2 fa-envelope-o" target="_blank" ><span class="label">Email</span></a></li>
+                
+                
+                    <li><a href="\#" class="icon style2 fa-rss" target="_blank" ><span class="label">RSS</span></a></li>
+                
+            </ul>
+        </section>
+        <ul class="copyright">
+            <li>&copy; Untitled. All rights reserved</li>
+            <li>Design: <a href="http://html5up.net" target="_blank">HTML5 UP</a></li>
+            <li>Hexo: <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></li>
+        </ul>
+    </div>
+</footer>
+    </div>
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="/Mwsu-Web-Dev/js/jquery.min.js"></script>
+
+<!-- skel -->
+<script src="/Mwsu-Web-Dev/js/skel.min.js"></script>
+
+<!-- Custom Code -->
+<script src="/Mwsu-Web-Dev/js/util.js"></script>
+
+<!--[if lte IE 8]>
+<script src="/Mwsu-Web-Dev/js/ie/respond.min.js"></script>
+<![endif]-->
+
+<!-- Custom Code -->
+<script src="/Mwsu-Web-Dev/js/main.js"></script>
+
+<!-- Gallery -->
+<script src="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+<script type="text/javascript">
+    var disqus_shortname = 'klugjo';
+
+    (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+</body>
+
+</html>
