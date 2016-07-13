@@ -22,4 +22,4 @@ CREATE TABLE IF NOT EXISTS `users` (
 - After a user is logged in, do NOT print the form, but provide a link (or button) to send the to the login page (login.php).
 - Then implement a login script that will authenticate them, and send them to "whereever" otherwise print an error message telling them to retry.
 - http://www.codingcage.com/2015/03/simple-login-and-signup-system-with-php.html
-- 
+
