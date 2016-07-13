@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--Description-->
+    
+        <meta name="description" content="Source: http://www.codingcage.com/2016/05/designing-bootstrap-signup-form-with.html
+Start With Bootstrap123456&amp;lt;head&amp;gt; &amp;lt;head&amp;gt;&amp;lt;meta http-e">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Terry Griffin">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Designing Bootstrap Signup Form with jQuery Validation"/>
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Mwsu Web Dev"/>
+
+    <!--Page Cover-->
+    
+        <meta property="og:image" content="undefined"/>
+    
+
+    <!-- Title -->
+    
+    <title>Designing Bootstrap Signup Form with jQuery Validation - Mwsu Web Dev</title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/Mwsu-Web-Dev/sass/main.css">
+
+    <!--[if lt IE 8]>
+        <script src="/Mwsu-Web-Dev/js/ie/html5shiv.js"></script>
+    <![endif]-->
+
+    <!--[if lt IE 8]>
+        <link rel="stylesheet" href="/Mwsu-Web-Dev/sass/ie8.css">
+    <![endif]-->
+
+    <!--[if lt IE 9]>
+        <link rel="stylesheet" href="/Mwsu-Web-Dev/sass/ie9.css">
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Menu -->
+        <!-- Header -->
+<header id="header">
+    <div class="inner">
+
+        <!-- Logo -->
+        <a href="/Mwsu-Web-Dev/" class="logo">
+            <span class="symbol"><img src="https://s3.amazonaws.com/f.cl.ly/items/242W2Q0B3b0O2P3e3d2y/ti_logo.png" alt="" /></span><span class="title">Mwsu Web Dev</span>
+        </a>
+
+        <!-- Nav -->
+        <nav>
+            <ul>
+                <li><a href="#menu">Menu</a></li>
+            </ul>
+        </nav>
+
+    </div>
+</header>
+
+<!-- Menu -->
+<nav id="menu">
+    <h2>Menu</h2>
+    <ul>
+        
+            <li>
+                <a href="/Mwsu-Web-Dev/">Home</a>
+            </li>
+        
+            <li>
+                <a href="/Mwsu-Web-Dev/archives">Archives</a>
+            </li>
+        
+            <li>
+                <a href="/Mwsu-Web-Dev/about.html">About</a>
+            </li>
+        
+    </ul>
+</nav>
+
+
+        <div id="main">
+            <div class="inner">
+
+                <!-- Main Content -->
+                
+
+    <h1>Designing Bootstrap Signup Form with jQuery Validation</h1>
+
+
+
+<!-- Gallery -->
+
+
+<!-- Content -->
+<p><sub>Source: <a href="http://www.codingcage.com/2016/05/designing-bootstrap-signup-form-with.html" target="_blank" rel="external">http://www.codingcage.com/2016/05/designing-bootstrap-signup-form-with.html</a></sub></p>
+<h2 id="Start-With-Bootstrap"><a href="#Start-With-Bootstrap" class="headerlink" title="Start With Bootstrap"></a>Start With Bootstrap</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span> </div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"Content-Type"</span> <span class="attr">content</span>=<span class="string">"text/html; charset=utf-8"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>Bootstrap Form with jQuery Validations<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"bootstrap/css/bootstrap.min.css"</span> <span class="attr">type</span>=<span class="string">"text/css"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>We Will See :</p>
+<ul>
+<li>Creating a Responsive Bootstrap Signup Form.</li>
+<li>Adding jQuery Validations into BootStrap Form.</li>
+<li>How to Add Custom Rules into jQuery Validation.</li>
+</ul>
+<p>##Bootstrap Part : Signup Form</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"signup-form-container"</span>&gt;</span></div><div class="line">         <span class="comment">&lt;!-- form start --&gt;</span></div><div class="line">         <span class="tag">&lt;<span class="name">form</span> <span class="attr">role</span>=<span class="string">"form"</span> <span class="attr">id</span>=<span class="string">"register-form"</span> <span class="attr">autocomplete</span>=<span class="string">"off"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-header"</span>&gt;</span></div><div class="line">               <span class="comment">&lt;!-- form header --&gt;</span>       </div><div class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-body"</span>&gt;</span></div><div class="line">               <span class="comment">&lt;!-- form body will be here, input controls --&gt;</span>              </div><div class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-footer"</span>&gt;</span></div><div class="line">               <span class="comment">&lt;!-- form footer, let say for submit button --&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">         <span class="tag">&lt;/<span class="name">form</span>&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">   <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>Adding input controls with glyphicon for better look. Input control should be within form-group div. To add a glyphicon into an input box, you make another div with <code>class=&quot;input-group&quot;</code> then just below the input group make another div with <code>class=&quot;input-group-addon&quot;</code>. Then add the suitable glyphicon into the <code>addon group div</code> like this <code>&lt;span class=&quot;glyphicon glyphicon-user&quot;&gt;&lt;/span&gt;</code></p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"form-group"</span>&gt;</div><div class="line">   &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"input-group"</span>&gt;</div><div class="line">      &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"input-group-addon"</span>&gt;&lt;span <span class="built_in">class</span>=<span class="string">"glyphicon glyphicon-user"</span>&gt;&lt;/span&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">      &lt;input <span class="built_in">name</span>=<span class="string">"name"</span> type=<span class="string">"text"</span> <span class="built_in">class</span>=<span class="string">"form-control"</span> placeholder=<span class="string">"Username"</span>&gt;</div><div class="line">   &lt;/<span class="keyword">div</span>&gt;</div><div class="line">   &lt;span <span class="built_in">class</span>=<span class="string">"help-block"</span> <span class="built_in">id</span>=<span class="string">"error"</span>&gt;&lt;/span&gt;</div><div class="line">&lt;/<span class="keyword">div</span>&gt;</div></pre></td></tr></table></figure>
+<p>Now the signup form:</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div></pre></td><td class="code"><pre><div class="line">&lt;body&gt;</div><div class="line">   &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"container"</span>&gt;</div><div class="line">      &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"signup-form-container"</span>&gt;</div><div class="line">         &lt;!<span class="comment">-- form start --&gt;</span></div><div class="line">         &lt;form role=<span class="string">"form"</span> <span class="built_in">id</span>=<span class="string">"register-form"</span> autocomplete=<span class="string">"off"</span>&gt;</div><div class="line">            &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"form-header"</span>&gt;</div><div class="line">               &lt;h3 <span class="built_in">class</span>=<span class="string">"form-title"</span>&gt;&lt;i <span class="built_in">class</span>=<span class="string">"fa fa-user"</span>&gt;&lt;/i&gt; Sign Up&lt;/h3&gt;</div><div class="line">               &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"pull-right"</span>&gt;</div><div class="line">                  &lt;h3 <span class="built_in">class</span>=<span class="string">"form-title"</span>&gt;&lt;span <span class="built_in">class</span>=<span class="string">"glyphicon glyphicon-pencil"</span>&gt;&lt;/span&gt;&lt;/h3&gt;</div><div class="line">               &lt;/<span class="keyword">div</span>&gt;</div><div class="line">            &lt;/<span class="keyword">div</span>&gt;</div><div class="line">            &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"form-body"</span>&gt;</div><div class="line">               &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"form-group"</span>&gt;</div><div class="line">                  &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"input-group"</span>&gt;</div><div class="line">                     &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"input-group-addon"</span>&gt;&lt;span <span class="built_in">class</span>=<span class="string">"glyphicon glyphicon-user"</span>&gt;&lt;/span&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">                     &lt;input <span class="built_in">name</span>=<span class="string">"name"</span> type=<span class="string">"text"</span> <span class="built_in">class</span>=<span class="string">"form-control"</span> placeholder=<span class="string">"Username"</span>&gt;</div><div class="line">                  &lt;/<span class="keyword">div</span>&gt;</div><div class="line">                  &lt;span <span class="built_in">class</span>=<span class="string">"help-block"</span> <span class="built_in">id</span>=<span class="string">"error"</span>&gt;&lt;/span&gt;</div><div class="line">               &lt;/<span class="keyword">div</span>&gt;</div><div class="line">               &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"form-group"</span>&gt;</div><div class="line">                  &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"input-group"</span>&gt;</div><div class="line">                     &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"input-group-addon"</span>&gt;&lt;span <span class="built_in">class</span>=<span class="string">"glyphicon glyphicon-envelope"</span>&gt;&lt;/span&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">                     &lt;input <span class="built_in">name</span>=<span class="string">"email"</span> type=<span class="string">"text"</span> <span class="built_in">class</span>=<span class="string">"form-control"</span> placeholder=<span class="string">"Email"</span>&gt;</div><div class="line">                  &lt;/<span class="keyword">div</span>&gt;</div><div class="line">                  &lt;span <span class="built_in">class</span>=<span class="string">"help-block"</span> <span class="built_in">id</span>=<span class="string">"error"</span>&gt;&lt;/span&gt;                     </div><div class="line">               &lt;/<span class="keyword">div</span>&gt;</div><div class="line">               &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"row"</span>&gt;</div><div class="line">                  &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"form-group col-lg-6"</span>&gt;</div><div class="line">                     &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"input-group"</span>&gt;</div><div class="line">                        &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"input-group-addon"</span>&gt;&lt;span <span class="built_in">class</span>=<span class="string">"glyphicon glyphicon-lock"</span>&gt;&lt;/span&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">                        &lt;input <span class="built_in">name</span>=<span class="string">"password"</span> <span class="built_in">id</span>=<span class="string">"password"</span> type=<span class="string">"password"</span> <span class="built_in">class</span>=<span class="string">"form-control"</span> placeholder=<span class="string">"Password"</span>&gt;</div><div class="line">                     &lt;/<span class="keyword">div</span>&gt;</div><div class="line">                     &lt;span <span class="built_in">class</span>=<span class="string">"help-block"</span> <span class="built_in">id</span>=<span class="string">"error"</span>&gt;&lt;/span&gt;                    </div><div class="line">                  &lt;/<span class="keyword">div</span>&gt;</div><div class="line">                  &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"form-group col-lg-6"</span>&gt;</div><div class="line">                     &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"input-group"</span>&gt;</div><div class="line">                        &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"input-group-addon"</span>&gt;&lt;span <span class="built_in">class</span>=<span class="string">"glyphicon glyphicon-lock"</span>&gt;&lt;/span&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">                        &lt;input <span class="built_in">name</span>=<span class="string">"cpassword"</span> type=<span class="string">"password"</span> <span class="built_in">class</span>=<span class="string">"form-control"</span> placeholder=<span class="string">"Retype Password"</span>&gt;</div><div class="line">                     &lt;/<span class="keyword">div</span>&gt;</div><div class="line">                     &lt;span <span class="built_in">class</span>=<span class="string">"help-block"</span> <span class="built_in">id</span>=<span class="string">"error"</span>&gt;&lt;/span&gt;                    </div><div class="line">                  &lt;/<span class="keyword">div</span>&gt;</div><div class="line">               &lt;/<span class="keyword">div</span>&gt;</div><div class="line">            &lt;/<span class="keyword">div</span>&gt;</div><div class="line">            &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"form-footer"</span>&gt;</div><div class="line">               &lt;button type=<span class="string">"submit"</span> <span class="built_in">class</span>=<span class="string">"btn btn-info"</span>&gt;</div><div class="line">               &lt;span <span class="built_in">class</span>=<span class="string">"glyphicon glyphicon-log-in"</span>&gt;&lt;/span&gt; Sign Me Up !</div><div class="line">               &lt;/button&gt;</div><div class="line">            &lt;/<span class="keyword">div</span>&gt;</div><div class="line">         &lt;/form&gt;</div><div class="line">      &lt;/<span class="keyword">div</span>&gt;</div><div class="line">   &lt;/<span class="keyword">div</span>&gt;</div><div class="line">&lt;/body&gt;</div></pre></td></tr></table></figure>
+<p><strong>Bootstrap Form Design</strong></p>
+<p><img src="http://f.cl.ly/items/3G1E2p3b0G1842182Y0N/Screen%20Shot%202016-07-13%20at%201.27.51%20PM.png" alt=""></p>
+<p>##JQuery Part : Validation</p>
+<p>ok guys after creating signup form now it’s time to complete it with jQuery validations, for that we need jquery plugin jquery.validate.min.js you can get it from the official site and a simpel jquery library jquery-1.11.2.min.js, so we have two js files to get work done. put the both file just above the closing  tag </p>
+<p><script src="bootstrap/js/bootstrap.min.js"></script></p>
+<p><script src="assets/jquery-1.11.2.min.js"></script></p>
+<p><script src="assets/jquery.validate.min.js"></script><br><!-- javascript/jquery validations will be here  --></p>
+<p><br></p>
+<p>create a new file as an register.js and copy/paste the following code inside the file, i have added all the input validations in this file . </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// JavaScript Validation For Registration Page</span></div><div class="line">$(<span class="string">'document'</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">// name validation</span></div><div class="line">    <span class="keyword">var</span> nameregex = <span class="regexp">/^[a-zA-Z ]+$/</span>;</div><div class="line"></div><div class="line">    $.validator.addMethod(<span class="string">"validname"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">value, element</span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.optional(element) || nameregex.test(value);</div><div class="line">    &#125;);</div><div class="line"></div><div class="line">    <span class="comment">// valid email pattern</span></div><div class="line">    <span class="keyword">var</span> eregex = <span class="regexp">/^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]&#123;2,4&#125;)+$/</span>;</div><div class="line"></div><div class="line">    $.validator.addMethod(<span class="string">"validemail"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">value, element</span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.optional(element) || eregex.test(value);</div><div class="line">    &#125;);</div><div class="line"></div><div class="line">    $(<span class="string">"#register-form"</span>).validate(&#123;</div><div class="line"></div><div class="line">        rules: &#123;</div><div class="line">            name: &#123;</div><div class="line">                required: <span class="literal">true</span>,</div><div class="line">                validname: <span class="literal">true</span>,</div><div class="line">                minlength: <span class="number">4</span></div><div class="line">            &#125;,</div><div class="line">            email: &#123;</div><div class="line">                required: <span class="literal">true</span>,</div><div class="line">                validemail: <span class="literal">true</span></div><div class="line">            &#125;,</div><div class="line">            password: &#123;</div><div class="line">                required: <span class="literal">true</span>,</div><div class="line">                minlength: <span class="number">8</span>,</div><div class="line">                maxlength: <span class="number">15</span></div><div class="line">            &#125;,</div><div class="line">            cpassword: &#123;</div><div class="line">                required: <span class="literal">true</span>,</div><div class="line">                equalTo: <span class="string">'#password'</span></div><div class="line">            &#125;,</div><div class="line">        &#125;,</div><div class="line">        messages: &#123;</div><div class="line">            name: &#123;</div><div class="line">                required: <span class="string">"Please Enter User Name"</span>,</div><div class="line">                validname: <span class="string">"Name must contain only alphabets and space"</span>,</div><div class="line">                minlength: <span class="string">"Your Name is Too Short"</span></div><div class="line">            &#125;,</div><div class="line">            email: &#123;</div><div class="line">                required: <span class="string">"Please Enter Email Address"</span>,</div><div class="line">                validemail: <span class="string">"Enter Valid Email Address"</span></div><div class="line">            &#125;,</div><div class="line">            password: &#123;</div><div class="line">                required: <span class="string">"Please Enter Password"</span>,</div><div class="line">                minlength: <span class="string">"Password at least have 8 characters"</span></div><div class="line">            &#125;,</div><div class="line">            cpassword: &#123;</div><div class="line">                required: <span class="string">"Please Retype your Password"</span>,</div><div class="line">                equalTo: <span class="string">"Password Did not Match !"</span></div><div class="line">            &#125;</div><div class="line">        &#125;,</div><div class="line">        errorPlacement: <span class="function"><span class="keyword">function</span>(<span class="params">error, element</span>) </span>&#123;</div><div class="line">            $(element).closest(<span class="string">'.form-group'</span>).find(<span class="string">'.help-block'</span>).html(error.html());</div><div class="line">        &#125;,</div><div class="line">        highlight: <span class="function"><span class="keyword">function</span>(<span class="params">element</span>) </span>&#123;</div><div class="line">            $(element).closest(<span class="string">'.form-group'</span>).removeClass(<span class="string">'has-success'</span>).addClass(<span class="string">'has-error'</span>);</div><div class="line">        &#125;,</div><div class="line">        unhighlight: <span class="function"><span class="keyword">function</span>(<span class="params">element, errorClass, validClass</span>) </span>&#123;</div><div class="line">            $(element).closest(<span class="string">'.form-group'</span>).removeClass(<span class="string">'has-error'</span>).addClass(<span class="string">'has-success'</span>);</div><div class="line">            $(element).closest(<span class="string">'.form-group'</span>).find(<span class="string">'.help-block'</span>).html(<span class="string">''</span>);</div><div class="line">        &#125;,</div><div class="line"></div><div class="line">        submitHandler: <span class="function"><span class="keyword">function</span>(<span class="params">form</span>) </span>&#123;</div><div class="line">            form.submit();</div><div class="line">            alert(<span class="string">'ok'</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>How To Add Custom Validation Method In JQuery Validation<br>// name validation<br>var nameregex = /^[a-zA-Z ]+$/;</p>
+<p>$.validator.addMethod(“validname”, function( value, element ) {<br>     return this.optional( element ) || nameregex.test( value );<br>}); </p>
+<p>// valid email pattern<br>var eregex = /^([a-zA-Z0-9_.-+])+\@(([a-zA-Z0-9-])+.)+([a-zA-Z0-9]{2,4})+$/;</p>
+<p>$.validator.addMethod(“validemail”, function( value, element ) {<br>     return this.optional( element ) || eregex.test( value );<br>});</p>
+<p>now calling the custom validation method if user input goes wrong</p>
+<p>// rules</p>
+<p>name: {<br>      required: true,<br>      validname: true // rule for accepts only alphabets with space<br>      },<br>email: {<br>      required: true,<br>      validemail: true // rule for accepts valid email pattern<br>      }</p>
+<p>// messages : user defined messages for the custom rules.</p>
+<p>name: {<br>      required: “Please Enter User Name”,<br>      validname: “Name must contain only alphabets and space”<br>      },<br>email: {<br>      required: “Please Enter Email Address”,<br>      validemail: “Enter Valid Email Address”<br>      }</p>
+<p><img src="http://f.cl.ly/items/2D421O1H2D1H3b3A0h2t/Screen%20Shot%202016-07-13%20at%201.28.55%20PM.png" alt=""></p>
+<p><img src="http://f.cl.ly/items/3T2e0R2S0y2D0Q441a0z/Screen%20Shot%202016-07-13%20at%201.30.07%20PM.png" alt=""></p>
+
+
+<!-- Tags -->
+
+
+
+<div class="tags">
+    <a href="/Mwsu-Web-Dev/tags/validation/" class="button small">validation</a> <a href="/Mwsu-Web-Dev/tags/jquery/" class="button small">jquery</a> <a href="/Mwsu-Web-Dev/tags/html/" class="button small">html</a>
+</div>
+
+
+
+<!-- Comments -->
+<div>
+    
+    <hr />
+    <h3>Kommentare:</h3>
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+
+</div>
+
+
+
+            </div>
+        </div>
+
+        <!-- Footer -->
+<footer id="footer">
+    <div class="inner">
+        <section>
+            <h2>About</h2>
+            <div>
+                This theme was initially developed by <a href="http://html5up.net" target="_blank">HTML5 UP</a>. It is adapted for Hexo by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a>.<br />The source code is available on <a href="https://github.com/klugjo/hexo-theme-phantom" target="_blank">GitHub</a>.
+            </div>
+        </section>
+        <section>
+            <h2>Follow</h2>
+            <ul class="icons">
+                
+                    <li><a href="https://twitter.com/?lang=en" class="icon style2 fa-twitter" target="_blank" ><span class="label">Twitter</span></a></li>
+                
+                
+                    <li><a href="https://www.facebook.com/" class="icon style2 fa-facebook" target="_blank" ><span class="label">Facebook</span></a></li>
+                
+                
+                    <li><a href="https://www.instagram.com/" class="icon style2 fa-instagram" target="_blank" ><span class="label">Instagram</span></a></li>
+                
+                
+                    <li><a href="https://dribbble.com/" class="icon style2 fa-dribbble" target="_blank" ><span class="label">Dribbble</span></a></li>
+                
+                
+                    <li><a href="https://github.com/klugjo/hexo-theme-phantom/commits?author=klugjo" class="icon style2 fa-github" target="_blank" ><span class="label">GitHub</span></a></li>
+                
+                
+                    <li><a href="https://plus.google.com/" class="icon style2 fa-google-plus" target="_blank" ><span class="label">Google+</span></a></li>
+                
+                
+                    <li><a href="https://www.behance.net/" class="icon style2 fa-behance" target="_blank" ><span class="label">Behance</span></a></li>
+                
+                
+                    <li><a href="https://500px.com/" class="icon style2 fa-500px" target="_blank" ><span class="label">500px</span></a></li>
+                
+                
+                    <li><a href="\#" class="icon style2 fa-envelope-o" target="_blank" ><span class="label">Email</span></a></li>
+                
+                
+                    <li><a href="\#" class="icon style2 fa-rss" target="_blank" ><span class="label">RSS</span></a></li>
+                
+            </ul>
+        </section>
+        <ul class="copyright">
+            <li>&copy; Untitled. All rights reserved</li>
+            <li>Design: <a href="http://html5up.net" target="_blank">HTML5 UP</a></li>
+            <li>Hexo: <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></li>
+        </ul>
+    </div>
+</footer>
+    </div>
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="/Mwsu-Web-Dev/js/jquery.min.js"></script>
+
+<!-- skel -->
+<script src="/Mwsu-Web-Dev/js/skel.min.js"></script>
+
+<!-- Custom Code -->
+<script src="/Mwsu-Web-Dev/js/util.js"></script>
+
+<!--[if lte IE 8]>
+<script src="/Mwsu-Web-Dev/js/ie/respond.min.js"></script>
+<![endif]-->
+
+<!-- Custom Code -->
+<script src="/Mwsu-Web-Dev/js/main.js"></script>
+
+<!-- Gallery -->
+<script src="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+<script type="text/javascript">
+    var disqus_shortname = 'klugjo';
+
+    (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+</body>
+
+</html>
