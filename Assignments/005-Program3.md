@@ -62,4 +62,23 @@ $api->executeCommand();
 
 ### Using the Api
 
+#### GET
+```
+curl -X "GET" http://mwsu-webdev.xyz/api/api.php/users
+```
 
+
+#### POST
+```
+curl -H "Content-Type: application/json" -X "POST" http://mwsu-webdev.xyz/api/api.php/users -d '{"fname":"susan","lname":"sarandon","display_name":"none","email":"susan@radical.com","password":"a;lsdjf;alsdjf;alsdfja;sdjfasdjfasldkjf"}'
+```
+
+#### PUT
+```
+curl -H "Content-Type: application/json" -X "PUT" http://mwsu-webdev.xyz/api/api.php/users/1 -d '{"fname":"susan"}'
+```
+
+#### DELET
+```
+curl -X "DELETE" http://mwsu-webdev.xyz/api/api.php/users/2
+```
