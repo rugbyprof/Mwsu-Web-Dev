@@ -9,6 +9,20 @@
 
 So the first thing we should do is "install" an api on our server. In our case, we can simply use a nice API that I found on github.
 
+### Products Structure
+
+```sql
+CREATE TABLE IF NOT EXISTS `products` (
+  `id` int(6) NOT NULL AUTO_INCREMENT,
+  `category` varchar(64) NOT NULL,
+  `desc` mediumtext NOT NULL,
+  `price` double(8,3) NOT NULL,
+  `img` varchar(128) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6886 ;
+```
+
+
 ### Getting an Api
 
 - Go to https://github.com/mevdschee/php-crud-api and clone this repository on your server.
