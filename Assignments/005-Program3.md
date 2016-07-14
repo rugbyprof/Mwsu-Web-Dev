@@ -5,7 +5,7 @@
 
 ![](http://f.cl.ly/items/1Z0l3P0a0L3a3v3h3T3C/api.png)
 
-API stands for: Application Programmer Interface, and can let the developer seperate the data layer from the interface (amongst other things). The biggest benefit for us is that we can get away from embedding our php code with our html. This is not the only way to solve our crazy code issue, but using an API to grab data from our backend server will help us "clean" up our code. It will also let us implement an architectural pattern known as MVC (Model View Controller). We won't adhere to MVC in the strictest sense, but the use of an API will help us seperate our "Views" (what the user sees) from our "Models" (the database connection layer).
+[API](https://en.wikipedia.org/wiki/Application_programming_interface) stands for: Application Programmer Interface, and can let the developer seperate the data layer from the interface (amongst other things). The biggest benefit for us is that we can get away from embedding our php code with our html. This is not the only way to solve our crazy code issue, but using an API to grab data from our backend server will help us "clean" up our code. It will also let us implement an architectural pattern known as [MVC](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller) (Model View Controller). We won't adhere to MVC in the strictest sense, but the use of an API will help us seperate our "Views" (what the user sees) from our "Models" (the database connection layer).
 
 So the first thing we should do is "install" an api on our server. In our case, we can simply use a nice API that I found on github.
 
