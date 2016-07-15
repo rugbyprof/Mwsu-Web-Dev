@@ -50,9 +50,11 @@ $json_array = json_decode(file_get_contents('products_big.json'),true);
 
 //For each entry in the json_array ... do something with it.
 foreach($json_array as $entry){
-	// Insert each into database here
+
 	// Remember to use  str_replace to replace '160' with a '~'
 	// Remember to use substring to turn price into a float.
+	// Create sql insert statement
+	// Insert each into database here
 }
 ```
 
