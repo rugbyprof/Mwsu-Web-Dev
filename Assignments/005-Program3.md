@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS `products` (
   `id` int(6) NOT NULL AUTO_INCREMENT,
   `category` varchar(64) NOT NULL,
   `desc` mediumtext NOT NULL,
-  `price` double(8,3) NOT NULL,
+  `price` double(10,3) NOT NULL,
   `img` varchar(128) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6886 ;
@@ -143,4 +143,15 @@ curl -X "DELETE" http://mwsu-webdev.xyz/api/api.php/users/2
 
 ## Curl Assignment:
 
-I will finish this tomorrow! (friday)
+- Using the documentation from [here](https://github.com/mevdschee/php-crud-api) complete the following requests using curl commands.
+- Place your answers in a file called `curl_answers.txt` in your project folder.
+- Also when you see "existing value" choose a value that you know exists in your data base.
+
+1. Find user with email matching "existing value" 
+2. Add a new user with the following information:
+    - fname: Salman
+    - lname: Kahn
+    - email: salman.kahn@indianactors.org
+    - display_name: coolasiwannabe
+    - password: 123456789
+3. Find all products with a price equal to 
