@@ -33,6 +33,7 @@ CREATE TABLE IF NOT EXISTS `products` (
 ## Load Table
 
 - Write a php script called `load_products.php` and place it in your project folder.
+- Copy the `products_big.json` into the same folder.
 - For help, here is a skeleton:
 
 ```php
@@ -57,6 +58,9 @@ foreach($json_array as $entry){
 	// Insert each into database here
 }
 ```
+
+- After you are successful, create a file called `products.sql` and put in your project folder.
+- From phpmyadmin, "export" your products table and place the sql commands in this file. This will allow us to rebuild in case of catastrophe.
 
 ## Api Overview
 
@@ -147,7 +151,8 @@ NOT DONE
 
 - Using the documentation from [here](https://github.com/mevdschee/php-crud-api) complete the following requests using curl commands.
 - Place your answers in a file called `curl_answers.txt` in your project folder.
-- Also when you see "existing value" choose a value that you know exists in your data base.
+- When you see "existing value" choose a value that you know exists in your data base.
+- The documentation has you use the `filter[]=...` to specify multiple filters. When you want to run a curl command with square brackets in the url, put `--globoff` in your command like so: `curl --globoff -X "GET" .....`. If you have some doubts, you can run your command from a browser address bar to check as well.
 
 1. Find user with email matching "existing value" 
 2. Add a new user with the following information:
@@ -156,4 +161,8 @@ NOT DONE
     - email: salman.kahn@indianactors.org
     - display_name: coolasiwannabe
     - password: 123456789
-3. Find all products with a price equal to 
+3. Find all products with a price equal to 99.99
+4. Find all products that have the word "tablet" AND the word "acer" in the description.
+5. Find all "Acer" tablets that are less than 100 dollars.
+6. Find all the images for laptops that have `intel i7` processors and `ssd` drives.
+7. 
