@@ -1,6 +1,11 @@
 ## Assignment 5 - Adding an Api
 #### Due July 18<sup>th</sup> by class time.
 
+## Assignment Overview
+
+- Create a products table in your database
+- Populate the products table with the data from here: 
+
 ## Api Overview
 
 ![](http://f.cl.ly/items/1Z0l3P0a0L3a3v3h3T3C/api.png)
