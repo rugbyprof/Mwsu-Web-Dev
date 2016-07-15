@@ -147,8 +147,6 @@ curl -X "DELETE" http://mwsu-webdev.xyz/api/api.php/users/2
 
 ## Curl Assignment:
 
-NOT DONE
-
 - Using the documentation from [here](https://github.com/mevdschee/php-crud-api) complete the following requests using curl commands.
 - Place your answers in a file called `curl_answers.txt` in your project folder.
 - When you see "existing value" choose a value that you know exists in your data base.
@@ -165,4 +163,6 @@ NOT DONE
 4. Find all products that have the word "tablet" AND the word "acer" in the description.
 5. Find all "Acer" tablets that are less than 100 dollars.
 6. Find all the images for laptops that have `intel i7` processors and `ssd` drives.
-7. 
+7. Find all cellphones that are NOT apple products.
+8. Update all products that have a price of `0.00` to have a price of `0.13` cents.
+8. Make sure you can delete from a table using curl.
