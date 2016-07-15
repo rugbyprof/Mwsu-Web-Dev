@@ -143,6 +143,8 @@ curl -X "DELETE" http://mwsu-webdev.xyz/api/api.php/users/2
 
 ## Curl Assignment:
 
+NOT DONE
+
 - Using the documentation from [here](https://github.com/mevdschee/php-crud-api) complete the following requests using curl commands.
 - Place your answers in a file called `curl_answers.txt` in your project folder.
 - Also when you see "existing value" choose a value that you know exists in your data base.
