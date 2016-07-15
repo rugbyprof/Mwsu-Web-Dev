@@ -58,8 +58,7 @@ foreach($json_array as $entry){
 }
 ```
 
-
-### Api Overview
+## Api Overview
 
 ![](http://f.cl.ly/items/1Z0l3P0a0L3a3v3h3T3C/api.png)
 
@@ -68,13 +67,11 @@ foreach($json_array as $entry){
 So the first thing we should do is "install" an api on our server. In our case, we can simply use a nice API that I found on github.
 
 
-
-
 ### Getting an Api
 
 - Go to https://github.com/mevdschee/php-crud-api and clone this repository on your server.
-- Place it in `/var/www/html/`
-- Rename the folder to `api`
+- Place it in `/var/www/html/` (NOT your Program_2 folder!)
+- Rename the folder to `api` so that we can reach it from `http://your.ip.address/api/api.php`
 - At the bottom of the file named `api.php` there is a code block that looks similar to the snippet below, except all lines are commented out. Uncomment the top group so we can connect this api to our mysql database:
 
 ```
@@ -121,7 +118,7 @@ $api->executeCommand();
 // $api->executeCommand();
 ```
 
-### Using the Api
+### Example Usage
 
 #### GET
 ```
@@ -143,3 +140,7 @@ curl -H "Content-Type: application/json" -X "PUT" http://mwsu-webdev.xyz/api/api
 ```
 curl -X "DELETE" http://mwsu-webdev.xyz/api/api.php/users/2
 ```
+
+## Curl Assignment:
+
+I will finish this tomorrow! (friday)
