@@ -1,3 +1,13 @@
+## Assignment 6 - Jquery table rows
+#### Due July 19<sup>th</sup> by class time.
+
+### Assignment Overview
+- Create a folder called `program_4` in your `/var/www/html` folder.
+- Call your file `index.php` and put it in your `program_4` folder.
+- Place the following code in your `index.php` file.
+- Add javascript to print the product information in the given table.
+- Display an image for each product that is 50x50.
+
 ```
 <?php
 	
