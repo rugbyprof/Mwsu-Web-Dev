@@ -153,16 +153,22 @@ curl -X "DELETE" http://mwsu-webdev.xyz/api/api.php/users/2
 - The documentation has you use the `filter[]=...` to specify multiple filters. When you want to run a curl command with square brackets in the url, put `--globoff` in your command like so: `curl --globoff -X "GET" .....`. If you have some doubts, you can run your command from a browser address bar to check as well.
 
 1. Find user with email matching "existing value" 
+    - `curl -X "GET" "http://mwsu-webdev.xyz/api/api.php/users?filter=email,eq,kerry.wodo@gmail.com"`
 2. Add a new user with the following information:
     - fname: Salman
     - lname: Kahn
     - email: salman.kahn@indianactors.org
     - display_name: coolasiwannabe
     - password: 123456789
+    - `curl -X "POST" "http://mwsu-webdev.xyz/api/api.php/users" -d '{"user_id":null,"fname":"Salman","lname":"Kahn","email":"salman.kahn@indianactors.org","display_name":"coolasiwannabe","password":"123456789"}'`
 3. Find all products with a price equal to 99.99
+    - `curl -X "GET" "http://mwsu-webdev.xyz/api/api.php/products?filter=price,eq,99.99"`
 4. Find all products that have the word "tablet" AND the word "acer" in the description.
+    - `curl --globoff -X "GET" "http://mwsu-webdev.xyz/api/api.php/products?filter[]=desc,cs,Acer&filter[]=desc,cs,tablet&satisfy=all"`
 5. Find all "Acer" tablets that are less than 100 dollars.
+    - `curl -X "GET" "http://mwsu-webdev.xyz/api/api.php/products?filter=price,lt,100"`
 6. Find all the images for laptops that have `intel i7` processors and `ssd` drives.
+    - `curl --globoff -X "GET" "http://mwsu-webdev.xyz/api/api.php/products?filter[]=desc,cs,intel&filter[]=desc,cs,i7&filter[]=desc,cs,ssd&satisfy=all"`
 7. Find all cellphones that are NOT apple products.
 8. Update all products that have a price of `0.00` to have a price of `0.13` cents.
 8. Make sure you can delete from a table using curl.
