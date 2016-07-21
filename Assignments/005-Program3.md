@@ -9,7 +9,7 @@
 - Use curl to "test" your api.
 
 ### General Requirements
-- Create a folder called `Program_3` in your `/var/www/html` directory.
+- Create a folder called `program_3` in your `/var/www/html` directory.
 - All files for this assignment will be placed in this folder. 
 
 ## Create Table 
