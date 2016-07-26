@@ -8,6 +8,7 @@
 - I removed the `Font-Awesome` and `fonts` folders from the `shopping_cart` folder to make the zip file smaller. So copy those from the previous project back into your `program_7` folder.
 
 ## Requirements
+- Fix any layout issues with the shopping cart so that items like the 'x' display properly.
 - When a user changes the count for an item in the cart, ensure that the price for that item is multiplied appropriately and displayed as well as updating the total for the cart.
 - When the delete icon is clicked, remove the item from the cart and update the total accordingly
 
