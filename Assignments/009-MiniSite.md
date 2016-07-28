@@ -1,6 +1,9 @@
 Login and Registration 
 https://github.com/fethica/PHP-Login
 
+Password Strength:
+https://github.com/ablanco/jquery.pwstrength.bootstrap
+
 Single Product View:
 http://startbootstrap.com/template-overviews/shop-item/
 
