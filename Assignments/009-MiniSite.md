@@ -15,6 +15,7 @@
 - Products
     - Using the multiple product view template, add the proper logic to make products show up in each of the "custom content" boxes with pagination below the products. 
     - Set the number of products to be viewed to 12.
+    - When a single product is clicked (make the name and image a link), show the single product page with that particular items information.
 - Sidebar Menu
     - Populate the sidebar menu with each category from the `categories` table in our database. 
     - When a category is clicked, filter the products in the main view to show only those products.
