@@ -19,6 +19,12 @@ See you Tuesday.
 - You need to have your own domain name already.
 - https://www.digitalocean.com/community/tutorials/how-to-secure-apache-with-let-s-encrypt-on-ubuntu-14-04
 
+### Create a Stripe Account
+- Create your test stripe account at https://stripe.com
+- Create a fake business name to go along with your account. 
+- Also make sure you generate your api keys: https://dashboard.stripe.com/account/apikeys
+- These are needed in the first tutorial
+
 ### Stripe Tutorial
 - Now that you have a domain name and an SSL certificate, you can start the stripe tutorial.
 - I found the tutorial here: https://stripe.com/docs/examples, so if you want you can look at other tutorials as well. 
