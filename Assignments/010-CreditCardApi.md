@@ -4,6 +4,10 @@ We will be using https://stripe.com/ to process credit cards. They are extremely
 
 See you Tuesday.
 
+### Install Composer
+- This is to help install the php stripe library.
+- https://getcomposer.org/download/
+
 ### Domain Name
 - To run credit cards you need SSL. To setup SSL you need a domain name! So, let's get a domain name.
 - A good place is here: https://www.namecheap.com. They have domains for $0.88. 
