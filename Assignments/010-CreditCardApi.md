@@ -23,7 +23,8 @@ See you Tuesday.
 - Create your test stripe account at https://stripe.com
 - Create a fake business name to go along with your account. 
 - Also make sure you generate your api keys: https://dashboard.stripe.com/account/apikeys
-- These are needed in the first tutorial
+- These are needed in the first tutorial.
+- Also when testing, use fake card numbers from here: https://stripe.com/docs/testing
 
 ### Stripe Tutorial
 - Now that you have a domain name and an SSL certificate, you can start the stripe tutorial.
