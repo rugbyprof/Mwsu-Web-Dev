@@ -7,6 +7,7 @@ See you Tuesday.
 ### Install Composer
 - This is to help install the php stripe library.
 - https://getcomposer.org/download/
+- After you install, then run `mv composer.phar /usr/local/bin/composer`. This will move `composer.phar` to the `\usr\local\bin` directory and let you run composer like this: `composer require stripe/stripe-php` instead of `php composer.phar require stripe/stripe-php`
 
 ### Domain Name
 - To run credit cards you need SSL. To setup SSL you need a domain name! So, let's get a domain name.
